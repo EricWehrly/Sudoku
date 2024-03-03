@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import { strict as assert } from 'node:assert';
-import Cell from './cell.mjs';
+import Cell from '../../../../scripts/gameObjects/playfield/cell.mjs';
 
 describe('cell', () => {
     describe('squareCoords', () => {
