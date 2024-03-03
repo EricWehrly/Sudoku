@@ -14,6 +14,7 @@ export default class CellRenderer extends Renderer {
         this.#cell = options.cell;
         this.#cell.renderer = this;
         this.element.className = 'cell';
+        this.update();
 
         options.containerElement.appendChild(this.element);
 
@@ -29,7 +30,7 @@ export default class CellRenderer extends Renderer {
         if(this.#cell.highlight) this.addClass("highlight");
         else this.removeClass("highlight");
 
-        this.element.innerHTML = this.#cell.digit;
+        if(this.#cell.prefill) this.element.innerHTML = this.#cell.digit;
 
         if(this.#cell.color) this.element.style.color = this.#cell.color;
     }

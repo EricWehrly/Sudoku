@@ -21,6 +21,10 @@ export default class Grid extends GameObject {
     #seed;
 
     cell(x, y) {
+
+        if(y == undefined) {
+            return this.cells[x];
+        }
         
         return this.#cells[x][y];
     }
@@ -39,6 +43,14 @@ export default class Grid extends GameObject {
         this.#size = options?.size || 3;
         this.#seed = options?.seed || new Seed(Grid.#RANDOM_SIX_DIGIT_NUMBER);
 
+        this.#addCells();
+        this.#makePrefills();
+
+        super.postConstruct();
+    }
+
+    #addCells() {
+
         const puzzle = Puzzle();
         for(var squareX = 0; squareX < this.#size; squareX++) {
             for(var squareY = 0; squareY < this.#size; squareY++) {
@@ -51,8 +63,21 @@ export default class Grid extends GameObject {
                 }
             }
         }
+    }
 
-        super.postConstruct();
+    #makePrefills() {
+
+        const maxCells = this.#size * this.#size * this.#size * this.#size;
+        let prefillCount = 9;
+
+        while(prefillCount > 0) {
+            const cellIndex = Math.floor(this.#seed.random(0, maxCells));
+            const cell = this.cell(cellIndex);
+            if(cell.prefill == false) {
+                cell.prefill = true;
+                prefillCount--;
+            }
+        }
     }
 
     getCells(filterFunction) {

@@ -6,12 +6,23 @@ export default class Cell {
     #digit;
     #squareCoords;
 
+    #prefill = false;
     #active = false;
     #highlight = false;
+
+    renderer = {
+        update() { }
+    }
 
     get x() { return this.#x; }
     get y() { return this.#y; }
     get digit() { return this.#digit; }
+
+    get prefill() { return this.#prefill; }
+    set prefill(value) { 
+        this.#prefill = value; 
+        this.renderer.update();
+    }
 
     get active() { return this.#active; }
     set active(value) { 
