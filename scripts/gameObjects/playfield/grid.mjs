@@ -23,10 +23,10 @@ export default class Grid extends GameObject {
 
     cell(x, y) {
 
-        if(y == undefined) {
+        if (y == undefined) {
             return this.cells[x];
         }
-        
+
         return this.#cells[x][y];
     }
 
@@ -48,7 +48,7 @@ export default class Grid extends GameObject {
         this.#makePrefills();
 
         super.postConstruct();
-        
+
         Events.Subscribe(Events.List.SudokuGuess, this.#sudokuGuess.bind(this));
     }
 
@@ -56,9 +56,9 @@ export default class Grid extends GameObject {
 
         const cell = this.#active;
         console.log(cell);
-        if(cell.known) return;
+        if (cell.known) return;
 
-        if(number == cell.digit) {
+        if (number == cell.digit) {
             cell.wrongGuess = false;
             cell.known = true;
         } else {
@@ -70,13 +70,16 @@ export default class Grid extends GameObject {
     #addCells() {
 
         const puzzle = Puzzle();
-        for(var squareX = 0; squareX < this.#size; squareX++) {
-            for(var squareY = 0; squareY < this.#size; squareY++) {
-                for(var cellX = 0; cellX < this.#size; cellX++) {
-                    for(var cellY = 0; cellY < this.#size; cellY++) {
+        let cellNumber = 0;
+        for (var squareY = 0; squareY < this.#size; squareY++) {
+            for (var squareX = 0; squareX < this.#size; squareX++) {
+                for (var cellY = 0; cellY < this.#size; cellY++) {
+                    for (var cellX = 0; cellX < this.#size; cellX++) {
+                        cellNumber++;
                         const gridX = cellX + (squareX * 3);
                         const gridY = cellY + (squareY * 3);
                         this.addCell(gridX, gridY, puzzle[gridX][gridY]);
+                        console.log(`${cellNumber}: ${gridX},${gridY}`);
                     }
                 }
             }
@@ -88,10 +91,10 @@ export default class Grid extends GameObject {
         const maxCells = this.#size * this.#size * this.#size * this.#size;
         let prefillCount = 9;
 
-        while(prefillCount > 0) {
+        while (prefillCount > 0) {
             const cellIndex = Math.floor(this.#seed.random(0, maxCells));
             const cell = this.cell(cellIndex);
-            if(cell.prefill == false) {
+            if (cell.prefill == false) {
                 cell.prefill = true;
                 prefillCount--;
             }
@@ -99,16 +102,16 @@ export default class Grid extends GameObject {
     }
 
     getCells(filterFunction) {
-        
+
         return this.cells.filter(filterFunction);
     }
 
     addCell(x, y, digit) {
 
-        while(this.#cells.length < x + 1) {
+        while (this.#cells.length < x + 1) {
             this.#cells.push([]);
         }
-        while(this.#cells[x].length < y + 1) {
+        while (this.#cells[x].length < y + 1) {
             this.#cells[x].push([]);
         }
 

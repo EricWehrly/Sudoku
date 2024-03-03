@@ -28,8 +28,8 @@ function renderSquare(grid, squareX, squareY) {
     flexContainer.className = 'flex-container';
     square.appendChild(flexContainer);
 
-    for(var x = 0; x < grid.size; x++) {
-        for(var y = 0; y < grid.size; y++) {
+    for(var y = 0; y < grid.size; y++) {
+        for(var x = 0; x < grid.size; x++) {
             const cell = grid.cell(x + (squareX * grid.size), y + (squareY * grid.size));
             rendercell(cell, flexContainer);
         }
@@ -45,8 +45,8 @@ function renderGrid(grid) {
     const renderRoot = document.getElementById("game-container");
     renderRoot.appendChild(grid.graphic);
 
-    for(var x = 0; x < grid.size; x++) {
-        for(var y = 0; y < grid.size; y++) {
+    for(var y = 0; y < grid.size; y++) {
+        for(var x = 0; x < grid.size; x++) {
             renderSquare(grid, x, y);
         }
     }
