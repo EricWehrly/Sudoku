@@ -2,6 +2,7 @@ import Seed from "../../core/seed.mjs";
 import GameObject from "../gameObject.mjs";
 import Cell from "./cell.mjs";
 import Puzzle from "../../puzzle.mjs";
+import Events from "../../core/events.mjs";
 
 export default class Grid extends GameObject {
 
@@ -47,6 +48,22 @@ export default class Grid extends GameObject {
         this.#makePrefills();
 
         super.postConstruct();
+        
+        Events.Subscribe(Events.List.SudokuGuess, this.#sudokuGuess.bind(this));
+    }
+
+    #sudokuGuess(number) {
+
+        console.log(`Sudoku guess ${number}`);
+        const cell = this.#active;
+        console.log(cell);
+
+        if(number == cell.digit) {
+            cell.known = true;
+            console.log('Correct!');
+        } else {
+            console.log('WRANG!');
+        }
     }
 
     #addCells() {

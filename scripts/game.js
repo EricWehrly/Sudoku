@@ -1,5 +1,7 @@
 import Grid from "./gameObjects/playfield/grid.mjs";
 import "./rendering/dom/gameObjects/grid.mjs"
+import './input/keyboard.mjs';
+import Events from "./core/events.mjs";
 
 const GAME_GRID_SIZE = 3;
 

@@ -30,7 +30,7 @@ export default class CellRenderer extends Renderer {
         if(this.#cell.highlight) this.addClass("highlight");
         else this.removeClass("highlight");
 
-        if(this.#cell.prefill) this.element.innerHTML = this.#cell.digit;
+        if(this.#cell.renderText) this.element.innerHTML = this.#cell.renderText;
 
         if(this.#cell.color) this.element.style.color = this.#cell.color;
     }

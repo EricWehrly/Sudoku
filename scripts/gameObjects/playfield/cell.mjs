@@ -7,6 +7,7 @@ export default class Cell {
     #squareCoords;
 
     #prefill = false;
+    #known = false;
     #active = false;
     #highlight = false;
 
@@ -22,6 +23,18 @@ export default class Cell {
     set prefill(value) { 
         this.#prefill = value; 
         this.renderer.update();
+    }
+    get known() { return this.#known; }
+    set known(value) { 
+        this.#known = value; 
+        this.renderer.update();
+    }
+
+    get renderText() {
+
+        if(this.#prefill || this.#known) {
+            return this.#digit;
+        }
     }
 
     get active() { return this.#active; }
