@@ -1,22 +1,23 @@
 import Events from '../../../core/events.mjs'
 import Grid from "../../../gameObjects/gameObject.mjs"
+import CellRenderer from './cell.mjs';
 
 // document.body
 // const renderRoot = document.getElementById("game-container");
 // console.log(renderRoot);
 
-function rendercell(grid, containerElement) {
+function rendercell(cell, containerElement) {
 
     // TODO: decorate each cell with row and column classes
     // that will make some UI / ease of use features easier
 
-    const cell = document.createElement('div');
-    cell.className = 'cell';
-
-    containerElement.appendChild(cell);
+    new CellRenderer({
+        cell,
+        containerElement
+    });
 }
 
-function renderSquare(grid) {
+function renderSquare(grid, squareX, squareY) {
     
     const square = document.createElement('div');
     square.className = 'square';
@@ -29,7 +30,8 @@ function renderSquare(grid) {
 
     for(var x = 0; x < grid.size; x++) {
         for(var y = 0; y < grid.size; y++) {
-            rendercell(grid, flexContainer);
+            const cell = grid.cell(x + (squareX * grid.size), y + (squareY * grid.size));
+            rendercell(cell, flexContainer);
         }
     }
 }
@@ -45,7 +47,7 @@ function renderGrid(grid) {
 
     for(var x = 0; x < grid.size; x++) {
         for(var y = 0; y < grid.size; y++) {
-            renderSquare(grid);
+            renderSquare(grid, x, y);
         }
     }
 
