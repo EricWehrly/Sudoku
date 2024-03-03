@@ -2,6 +2,7 @@ import Grid from "./gameObjects/playfield/grid.mjs";
 import "./rendering/dom/gameObjects/grid.mjs"
 import './input/keyboard.mjs';
 import Events from "./core/events.mjs";
+import Ability from "./gameObjects/abilities/ability.mjs";
 
 const GAME_GRID_SIZE = 3;
 
@@ -22,3 +23,7 @@ const grid = new Grid({
 
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
+
+new Ability({
+    trigger: Events.List.SudokuGuess
+});

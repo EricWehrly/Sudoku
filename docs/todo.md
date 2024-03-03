@@ -1,3 +1,10 @@
+sudoku meets minesweeper?
+
+or battleship:
+    pick out a specific linear combination of clustered numbers (eg '6, 2, 4')
+    identify cluster as a target for the player
+    let them use abilities to narrow the hunt quickly
+
 variable difficulty -- how many pre-filled
 
 Equippable abilities per letter
