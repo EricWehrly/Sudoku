@@ -1,3 +1,4 @@
+import GameOption from "../../../core/gameOptions.mjs";
 import Renderer from "../renderer.mjs";
 
 export default class CellRenderer extends Renderer {
@@ -15,8 +16,6 @@ export default class CellRenderer extends Renderer {
         this.#cell.renderer = this;
         this.element.className = 'cell';
         this.update();
-
-        this.element.setAttribute('coordinate', `( ${this.#cell.x}, ${this.#cell.y} )`);
 
         options.containerElement.appendChild(this.element);
 
@@ -38,6 +37,10 @@ export default class CellRenderer extends Renderer {
         if(this.#cell.renderText) this.element.innerHTML = this.#cell.renderText;
 
         if(this.#cell.color) this.element.style.color = this.#cell.color;
+
+        if(GameOption.ShowCoordinates) {
+            this.element.setAttribute('coordinate', `( ${this.#cell.x}, ${this.#cell.y} )`);
+        }
     }
 
     // we need a functional cell class
