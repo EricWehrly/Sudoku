@@ -12,7 +12,7 @@ document.body.appendChild(gameContainer);
 // trap to recompute on window resize
 // I think we need to grab the "measure font height" func from Monolith
 const maxFontHeight = Math.floor(window.innerHeight / (GAME_GRID_SIZE * GAME_GRID_SIZE));
-document.body.style.fontSize = `${(maxFontHeight - 2)}px`;
+document.body.style.fontSize = `${(maxFontHeight / 2)}px`;
 
 const grid = new Grid({
     size: GAME_GRID_SIZE
