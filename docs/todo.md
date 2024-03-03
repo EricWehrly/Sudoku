@@ -16,8 +16,13 @@ Ability ideas:
 (Prefix) - Automatically make notes
 $$$$
 
+magic, spells, sci-fi -- cool orthoganal avenues
+colors & elemental statuses
+spy shit in the numbers, grids, sections? (missions to try to identify a particular one)
+
 Challenge ideas:
 Finish within x time
 Reduce # of guesses
 Have to fill in #s in order (all 1s, then 2s, etc.)
+Must fill in X last
 Limited notes?

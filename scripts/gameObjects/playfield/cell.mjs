@@ -12,7 +12,6 @@ export default class Cell {
     get x() { return this.#x; }
     get y() { return this.#y; }
     get digit() { return this.#digit; }
-    set digit(value) { this.#digit = value; }   // we could probably force constructor to provide this
 
     get active() { return this.#active; }
     set active(value) { 
@@ -82,7 +81,7 @@ export default class Cell {
 
     get squareCells() {
 
-        return this.#grid.getcells(cell => cell.squareCoords == this.squareCoords);
+        return this.#grid.getCells(cell => cell.squareCoords == this.squareCoords);
     }
 
     get connectedCells() {
@@ -96,6 +95,17 @@ export default class Cell {
         return cells;
     }
 
+    get exclusions() {
+
+        const exclusions = [];
+
+        this.connectedCells.forEach(function(cell) {
+            if(cell.digit) exclusions.push(cell.digit);
+        });
+
+        return exclusions;
+    }
+
     constructor(options) {
 
         // TODO: assert options
@@ -103,5 +113,7 @@ export default class Cell {
         this.#grid = options.grid;
         this.#x = options.x;
         this.#y = options.y;
+        this.#digit = options.digit;
+        if(options.color) this.color = options.color;
     }
 }
