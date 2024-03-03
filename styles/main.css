@@ -9,6 +9,8 @@ body {
     overflow: hidden;
 
     background-color: #555;
+    font-family: helvetica;
+    /* text-shadow */
 }
 
 /* TODO: embed in centering div */
@@ -49,6 +51,10 @@ body {
 .cell {
     border: 1px dashed gray;
     flex: 3 29%;
+    
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .cell:hover {

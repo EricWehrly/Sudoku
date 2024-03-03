@@ -28,6 +28,8 @@ export default class CellRenderer extends Renderer {
 
         if(this.#cell.highlight) this.addClass("highlight");
         else this.removeClass("highlight");
+
+        this.element.innerHTML = this.#cell.digit;
     }
 
     // we need a functional cell class

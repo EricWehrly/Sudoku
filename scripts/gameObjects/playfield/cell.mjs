@@ -3,12 +3,15 @@ export default class Cell {
     #grid;
     #x;
     #y;
+    #digit;
 
     #active = false;
     #highlight = false;
 
     get x() { return this.#x; }
     get y() { return this.#y; }
+    get digit() { return this.#digit; }
+    set digit(value) { this.#digit = value; }   // we could probably force constructor to provide this
 
     get active() { return this.#active; }
     set active(value) { 
