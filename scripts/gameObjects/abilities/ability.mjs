@@ -1,5 +1,3 @@
-// import AbilityTrigger from "./triggers.mjs";
-
 export default class Ability {
 
     #trigger;

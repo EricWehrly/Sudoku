@@ -20,10 +20,8 @@ document.body.style.fontSize = `${(maxFontHeight / 2)}px`;
 
 new GameOption({
     name: 'ShowCoordinates',
-    value: true
+    value: false
 });
-
-console.log(GameOption.ShowCoordinates);
 
 const grid = new Grid({
     size: GAME_GRID_SIZE
@@ -41,12 +39,35 @@ function eligibleCells(cell) {
 function sixesPointToTwoes() {
 
     const cells = grid.getCells(eligibleCells);
-    console.log(cells);
     cells.forEach(function(cell) {
+
+        const matchingDigitCells = grid.getCells(function(gridCell) {
+            return gridCell.digit == 2
+        });
+
+        const hasLeft = matchingDigitCells.filter(function(gridCell) {
+            return gridCell.y == cell.y
+            && gridCell.x < cell.x
+        });
+        if(hasLeft.length > 0) cell.renderText += 'W';
         
-        // for each of 4 directions
-        // march until end of direction
-        // if 2, change box text and stop
+        const hasRight = matchingDigitCells.filter(function(gridCell) {
+            return gridCell.y == cell.y
+            && gridCell.x > cell.x
+        });
+        if(hasRight.length > 0) cell.renderText += 'E';
+        
+        const hasAbove = matchingDigitCells.filter(function(gridCell) {
+            return gridCell.x == cell.x
+            && gridCell.y < cell.y
+        });
+        if(hasAbove.length > 0) cell.renderText += 'N';
+        
+        const hasBelow = matchingDigitCells.filter(function(gridCell) {
+            return gridCell.x == cell.x
+            && gridCell.y > cell.y
+        });
+        if(hasBelow.length > 0) cell.renderText += 'S';
     });
 }
 

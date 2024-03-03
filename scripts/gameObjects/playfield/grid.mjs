@@ -79,7 +79,6 @@ export default class Grid extends GameObject {
                         const gridX = cellX + (squareX * 3);
                         const gridY = cellY + (squareY * 3);
                         this.addCell(gridX, gridY, puzzle[gridX][gridY]);
-                        console.log(`${cellNumber}: ${gridX},${gridY}`);
                     }
                 }
             }
