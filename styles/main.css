@@ -1,8 +1,6 @@
 
 :root {
     --ui-opacity: 0.8;
-    --highlight: rgb(60, 60, 180);
-    --highlight-lesser: rgb(100, 100, 220);
 }
 
 body {
@@ -54,13 +52,17 @@ body {
 }
 
 .cell:hover {
-    background-color: var(--highlight-lesser);
+    background-color: rgb(100, 100, 220);;
 }
 
-.active, .highlight {
-    background-color: var(--highlight);
+.active {
+    background-color: rgb(60, 60, 180);
+}
+
+.highlight {
+    background-color: rgba(60, 60, 180, var(--ui-opacity));
 }
 
 .active { 
-    border: 1px solid blue;
+    border: 2px solid blue;
 }

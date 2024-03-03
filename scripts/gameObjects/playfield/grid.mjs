@@ -10,6 +10,10 @@ export default class Grid extends GameObject {
     #cells = [[],];
     get cells() { return this.#cells.flat(); }
 
+    #active;
+    get active() { return this.#active; }
+    set active(value) { this.#active = value; }
+
     cell(x, y) {
         
         return this.#cells[x][y];
