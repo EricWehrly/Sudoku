@@ -1,4 +1,4 @@
-import { generateId } from "../util/javascript-extensions.js"
+import { generateId } from "../util/javascript-extensions.mjs"
 
 // TODO: extends Listed
 export default class Events {
@@ -142,4 +142,4 @@ export default class Events {
     }
 }
 
-if(window) window.Events = Events;
+if(typeof window != 'undefined') window.Events = Events;

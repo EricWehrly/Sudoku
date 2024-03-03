@@ -1,5 +1,5 @@
 import Events from "./events.mjs";
-import { generateId } from "../util/javascript-extensions.js";
+import { generateId } from "../util/javascript-extensions.mjs";
 
 const LOOP_METHODS_SLOW = [];
 const LOOP_METHODS_FAST = [];
