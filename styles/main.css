@@ -41,16 +41,12 @@ body {
     display: inline-flex;
     border: 2px solid rgba(50, 50, 50, var(--ui-opacity));
     flex: 3 29%;
-
-    /*
-    width: 1.4em;
-    height: 1.4em;
-    */
 }
 
 .cell {
     border: 1px dashed gray;
     flex: 3 29%;
+    position: relative;
     
     align-items: center;
     justify-content: center;
@@ -76,4 +72,12 @@ body {
 
 .error {
     color: red;
+}
+
+.cell:after {
+    content: attr(coordinate);
+    font-size: .4em;
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
 }

@@ -16,6 +16,8 @@ export default class CellRenderer extends Renderer {
         this.element.className = 'cell';
         this.update();
 
+        this.element.setAttribute('coordinate', `( ${this.#cell.x}, ${this.#cell.y} )`);
+
         options.containerElement.appendChild(this.element);
 
         // cell click toggle active
