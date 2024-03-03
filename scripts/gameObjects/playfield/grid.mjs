@@ -54,15 +54,16 @@ export default class Grid extends GameObject {
 
     #sudokuGuess(number) {
 
-        console.log(`Sudoku guess ${number}`);
         const cell = this.#active;
         console.log(cell);
+        if(cell.known) return;
 
         if(number == cell.digit) {
+            cell.wrongGuess = false;
             cell.known = true;
-            console.log('Correct!');
         } else {
-            console.log('WRANG!');
+            cell.wrongGuess = true;
+            cell.renderText = number;
         }
     }
 

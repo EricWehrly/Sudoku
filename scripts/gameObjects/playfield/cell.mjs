@@ -4,10 +4,13 @@ export default class Cell {
     #x;
     #y;
     #digit;
+    #color;
     #squareCoords;
+    #renderText;
 
     #prefill = false;
     #known = false;
+    #wrongGuess = false;
     #active = false;
     #highlight = false;
 
@@ -18,15 +21,26 @@ export default class Cell {
     get x() { return this.#x; }
     get y() { return this.#y; }
     get digit() { return this.#digit; }
+    get color() { return this.#color; }
 
     get prefill() { return this.#prefill; }
     set prefill(value) { 
+        if(value == this.#prefill) return;
         this.#prefill = value; 
         this.renderer.update();
     }
     get known() { return this.#known; }
     set known(value) { 
+        if(value == this.#known) return;
+        if(this.#prefill) return;
         this.#known = value; 
+        this.renderer.update();
+    }
+    get wrongGuess() { return this.#wrongGuess; }
+    set wrongGuess(value) { 
+        if(value == this.#wrongGuess) return;
+        if(this.#prefill) return;
+        this.#wrongGuess = value; 
         this.renderer.update();
     }
 
@@ -34,7 +48,14 @@ export default class Cell {
 
         if(this.#prefill || this.#known) {
             return this.#digit;
+        } else if(this.#renderText) {
+            return this.#renderText;
         }
+    }
+    set renderText(value) {
+        if(value == this.#renderText) return;
+        this.#renderText = value;
+        this.renderer.update();
     }
 
     get active() { return this.#active; }
@@ -138,6 +159,6 @@ export default class Cell {
         this.#x = options.x;
         this.#y = options.y;
         this.#digit = options.digit;
-        if(options.color) this.color = options.color;
+        this.#color = options.color;
     }
 }

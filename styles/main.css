@@ -73,3 +73,7 @@ body {
 .active { 
     border: 2px solid blue;
 }
+
+.error {
+    color: red;
+}
