@@ -73,7 +73,22 @@ describe('cell', () => {
             assert.equal(coords.x, 2);
             assert.equal(coords.y, 2);
         });
+    
+        it('should work on different size grid', () => {
 
-        // should work on different size grid
+            const bigGrid = {
+                size: 8
+            };
+
+            const cell = new Cell({
+                x: 40,
+                y: 60,
+                grid: bigGrid
+            });
+            const coords = cell.squareCoords;
+    
+            assert.equal(coords.x, 5);
+            assert.equal(coords.y, 7);
+        });
     });
 });

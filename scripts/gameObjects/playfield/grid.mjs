@@ -75,6 +75,8 @@ export default class Grid extends GameObject {
             y
         });
         this.#cells[x][y] = cell;
+
+        return cell;
     }
 
     generateSudoku() {
