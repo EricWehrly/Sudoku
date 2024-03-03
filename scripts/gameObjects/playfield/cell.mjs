@@ -4,6 +4,7 @@ export default class Cell {
     #x;
     #y;
     #digit;
+    #squareCoords;
 
     #active = false;
     #highlight = false;
@@ -41,6 +42,58 @@ export default class Cell {
 
         this.#highlight = value;
         this.renderer.update();
+    }
+
+    get squareCoords() {
+
+        if(!this.#squareCoords) {
+
+            let x = Math.floor(this.x / this.#grid.size);
+            let y = Math.floor(this.y / this.#grid.size);
+
+            this.#squareCoords = {
+                x,
+                y
+            };
+        }
+
+        return this.#squareCoords;
+    }
+
+    get rowCells() {
+
+        const cells = [];
+        for(var x = 0; x < (this.#grid.size * this.#grid.size); x++) {
+            cells.push(this.#grid.cell(x, this.y));
+        }
+
+        return cells;
+    }
+
+    get colCells() {
+
+        const cells = [];
+        for(var y = 0; y < (this.#grid.size * this.#grid.size); y++) {
+            cells.push(this.#grid.cell(this.x, y));
+        }
+
+        return cells;
+    }
+
+    get squareCells() {
+
+        return this.#grid.getcells(cell => cell.squareCoords == this.squareCoords);
+    }
+
+    get connectedCells() {
+
+        const cells = [
+            ...this.rowCells,
+            ...this.colCells,
+            ...this.squareCells,
+        ];
+
+        return cells;
     }
 
     constructor(options) {

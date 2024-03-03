@@ -55,6 +55,11 @@ export default class Grid extends GameObject {
         super.postConstruct();
     }
 
+    getCells(filterFunction) {
+        
+        return this.cells.filter(filterFunction);
+    }
+
     addCell(x, y) {
 
         while(this.#cells.length < x + 1) {
