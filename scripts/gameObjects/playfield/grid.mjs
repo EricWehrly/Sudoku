@@ -81,13 +81,38 @@ export default class Grid extends GameObject {
 
     generateSudoku() {
 
+        let problemCount = 0;
+
         // iterate through each grid cell
         // determine its # based on adjacent cells and random seed
         for(var x = 0; x < this.#size * this.#size; x++) {
             for(var y = 0; y < this.#size * this.#size; y++) {
                 const cell = this.#cells[x][y];
 
-                cell.digit = Math.floor(this.#seed.random(1, 9));
+                let iterations = 0;
+                const exclusions = cell.exclusions;
+                while(cell.digit == undefined || exclusions.includes(cell.digit)) {
+
+                    let excl = [...new Set(cell.exclusions)];
+                    if(45 <= excl.reduce((a, b) => a + b, 0)) {
+                        problemCount++;
+                        console.log(excl.sort());
+                        // debugger;
+                        cell.digit = `x${problemCount}`;
+                        cell.color = 'red';
+                        break;
+                    }
+                    iterations++;
+                    if(iterations > 3000) {
+                        problemCount++;
+                        console.log(excl.sort());
+                        cell.digit = `y${problemCount}`;
+                        cell.color = 'yellow';
+                        break;
+                    }
+
+                    cell.digit = Math.floor(this.#seed.random(1, 9));
+                }
             }
         }
     }
