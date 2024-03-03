@@ -50,10 +50,10 @@ export default class Cell {
 
     get renderText() {
 
-        if(this.visible) {
-            return this.#digit;
-        } else if(this.#renderText) {
+        if(this.#renderText) {
             return this.#renderText;
+        } else if(this.visible) {
+            return this.#digit;
         }
     }
     set renderText(value) {
