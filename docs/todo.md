@@ -1,10 +1,3 @@
-sudoku meets minesweeper?
-
-or battleship:
-    pick out a specific linear combination of clustered numbers (eg '6, 2, 4')
-    identify cluster as a target for the player
-    let them use abilities to narrow the hunt quickly
-
 variable difficulty -- how many pre-filled
 
 Equippable abilities per letter
@@ -33,3 +26,14 @@ Reduce # of guesses
 Have to fill in #s in order (all 1s, then 2s, etc.)
 Must fill in X last
 Limited notes?
+Render guessed #s invisible
+
+freezing mechanic:
+    (AI / antagonist) chosen square gets 'frozen'
+    cells must be unfrozen individually
+    by successfully guessing cells in same col / row
+
+Level constraints:
+    Must guess in order (first 1, then 2, etc.) 
+        Cannot guess same wrong #s until they're right 
+        If they run out of #s, game over
