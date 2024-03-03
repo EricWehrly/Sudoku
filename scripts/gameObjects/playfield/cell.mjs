@@ -44,9 +44,13 @@ export default class Cell {
         this.renderer.update();
     }
 
+    get visible() { 
+        return this.#prefill || this.#known;
+    }
+
     get renderText() {
 
-        if(this.#prefill || this.#known) {
+        if(this.visible) {
             return this.#digit;
         } else if(this.#renderText) {
             return this.#renderText;

@@ -24,6 +24,25 @@ const grid = new Grid({
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 
+function eligibleCells(cell) {
+
+    return cell.digit == 6
+        && cell.visible;
+}
+
+function sixesPointToTwoes() {
+
+    const cells = grid.getCells(eligibleCells);
+    console.log(cells);
+    cells.forEach(function(cell) {
+
+        // for each of 4 directions
+        // march until end of direction
+        // if 2, change box text and stop
+    });
+}
+
 new Ability({
-    trigger: Events.List.SudokuGuess
+    trigger: Events.List.SudokuGuess,
+    action: sixesPointToTwoes
 });

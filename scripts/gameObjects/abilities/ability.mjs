@@ -20,6 +20,6 @@ export default class Ability {
 
     #handleTrigger() {
 
-        console.log(this.#action);
+        this.#action();
     }
 }
