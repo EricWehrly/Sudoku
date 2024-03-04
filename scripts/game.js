@@ -4,6 +4,7 @@ import './input/keyboard.mjs';
 import Events from "./core/events.mjs";
 import Ability from "./gameObjects/abilities/ability.mjs";
 import GameOption from "./core/gameOptions.mjs";
+import './ui/ui.mjs';
 
 const GAME_GRID_SIZE = 3;
 
