@@ -1,4 +1,5 @@
 import Events from "../core/events.mjs";
+import GameOption from "../core/gameOptions.mjs";
 
 function handleKeyDown(event) {
 
@@ -8,6 +9,10 @@ function handleKeyDown(event) {
     const input = parseInt(event.key);
     if(input > 0 && input < 10) {
         Events.RaiseEvent(Events.List.SudokuGuess, input);
+    }
+
+    if(event.key == 'n') {
+        GameOption.HintMode = !GameOption.HintMode;
     }
 }
 
