@@ -33,7 +33,7 @@ Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 function eligibleCells(cell) {
 
     return cell.digit == 6
-        && cell.visible;
+        && cell.known;
 }
 
 function sixesPointToTwoes() {

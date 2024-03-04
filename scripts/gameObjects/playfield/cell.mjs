@@ -1,4 +1,6 @@
-export default class Cell {
+import GameObject from "../gameObject.mjs";
+
+export default class Cell extends GameObject {
 
     #grid;
     #x;
@@ -14,10 +16,6 @@ export default class Cell {
     #active = false;
     #highlight = false;
 
-    renderer = {
-        update() { }
-    }
-
     get x() { return this.#x; }
     get y() { return this.#y; }
     get digit() { return this.#digit; }
@@ -29,7 +27,7 @@ export default class Cell {
         this.#prefill = value; 
         this.renderer.update();
     }
-    get known() { return this.#known; }
+    get known() { return this.#known || this.#prefill }
     set known(value) { 
         if(value == this.#known) return;
         if(this.#prefill) return;
@@ -44,15 +42,11 @@ export default class Cell {
         this.renderer.update();
     }
 
-    get visible() { 
-        return this.#prefill || this.#known;
-    }
-
     get renderText() {
 
         if(this.#renderText) {
             return this.#renderText;
-        } else if(this.visible) {
+        } else if(this.#prefill || this.#known) {
             return this.#digit;
         }
     }
@@ -159,10 +153,14 @@ export default class Cell {
 
         // TODO: assert options
 
+        super(options);
+
         this.#grid = options.grid;
         this.#x = options.x;
         this.#y = options.y;
         this.#digit = options.digit;
         this.#color = options.color;
+
+        // super.postConstruct();
     }
 }

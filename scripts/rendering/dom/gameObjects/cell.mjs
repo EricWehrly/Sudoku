@@ -18,12 +18,17 @@ export default class CellRenderer extends Renderer {
         this.update();
 
         options.containerElement.appendChild(this.element);
+        const style = window.getComputedStyle(this.element);
+        this.element.setAttribute('desiredDisplay', style.display);
 
         // cell click toggle active
         this.element.addEventListener("click", this.toggleActive.bind(this), false);
     }
 
     update(options) {
+
+        if(this.#cell.visible) this.element.style.display = this.element.getAttribute('desiredDisplay');
+        else this.element.style.display = 'none';
 
         if(this.#cell.active) this.addClass("active");
         else this.removeClass("active");

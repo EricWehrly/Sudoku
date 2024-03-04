@@ -33,5 +33,3 @@ freezing mechanic:
     (AI / antagonist) chosen square gets 'frozen'
     cells must be unfrozen individually
     by successfully guessing cells in same col / row
-
-Level constraints:

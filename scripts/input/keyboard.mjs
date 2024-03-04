@@ -1,7 +1,5 @@
 import Events from "../core/events.mjs";
 
-Events.List.SudokuGuess = 'SudokuGuess';
-
 function handleKeyDown(event) {
 
     // event.key

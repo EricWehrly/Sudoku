@@ -5,7 +5,10 @@ export default class Events {
 
     static List = {
         "GameStart": "GameStart",
-        "GameObjectCreated": "GameObjectCreated"
+        "GameObjectCreated": "GameObjectCreated",
+        'SudokuGuess': 'SudokuGuess',
+        'SudokuGuess': 'SudokuGuessCorrect',
+        'SudokuGuess': 'SudokuGuessWrong'
     }
 
     static #Subscriptions = {};

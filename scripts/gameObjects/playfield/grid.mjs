@@ -52,6 +52,31 @@ export default class Grid extends GameObject {
         Events.Subscribe(Events.List.SudokuGuess, this.#sudokuGuess.bind(this));
     }
 
+    getCells(filterFunction) {
+
+        return this.cells.filter(filterFunction);
+    }
+
+    addCell(x, y, digit) {
+
+        while (this.#cells.length < x + 1) {
+            this.#cells.push([]);
+        }
+        while (this.#cells[x].length < y + 1) {
+            this.#cells[x].push([]);
+        }
+
+        const cell = new Cell({
+            grid: this,
+            x,
+            y,
+            digit
+        });
+        this.#cells[x][y] = cell;
+
+        return cell;
+    }
+
     #sudokuGuess(number) {
 
         const cell = this.#active;
@@ -98,30 +123,5 @@ export default class Grid extends GameObject {
                 prefillCount--;
             }
         }
-    }
-
-    getCells(filterFunction) {
-
-        return this.cells.filter(filterFunction);
-    }
-
-    addCell(x, y, digit) {
-
-        while (this.#cells.length < x + 1) {
-            this.#cells.push([]);
-        }
-        while (this.#cells[x].length < y + 1) {
-            this.#cells[x].push([]);
-        }
-
-        const cell = new Cell({
-            grid: this,
-            x,
-            y,
-            digit
-        });
-        this.#cells[x][y] = cell;
-
-        return cell;
     }
 }
