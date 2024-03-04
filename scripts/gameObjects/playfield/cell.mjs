@@ -15,6 +15,7 @@ export default class Cell extends GameObject {
     #wrongGuess = false;
     #active = false;
     #highlight = false;
+    #notes = [];
 
     get x() { return this.#x; }
     get y() { return this.#y; }
@@ -83,6 +84,31 @@ export default class Cell extends GameObject {
     set highlight(value) { 
 
         this.#highlight = value;
+        this.renderer.update();
+    }
+
+    get notes() { return this.#notes; }
+    addHint(note) {
+
+        if(!this.#notes.includes(note)) {
+            this.#notes.push(note);
+            this.renderer.update();
+        }
+    }
+
+    removeHint(note) {
+
+        this.#notes.removeItem(note);
+        this.renderer.update();
+    }
+
+    toggleNote(note) {
+
+        if(!this.#notes.includes(note)) {
+            this.#notes.push(note);
+        } else {
+            this.#notes.removeItem(note);
+        }
         this.renderer.update();
     }
 

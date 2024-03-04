@@ -39,9 +39,9 @@ export function mergeDeep(target, options, ...sources) {
   if (!sources.length) return target;
   const source = sources.shift();
 
-  if(options.maxDepth && options.depth != undefined) {
+  if (options.maxDepth && options.depth != undefined) {
     options.depth++;
-    if(options.depth > options.maxDepth) {
+    if (options.depth > options.maxDepth) {
       console.debug(`Stopping merge at depth ${options.maxDepth}`);
       return mergeDeep(target, options, ...sources);
     }
@@ -57,7 +57,7 @@ export function mergeDeep(target, options, ...sources) {
           Object.assign(target, { [key]: source[key] });
         } catch (ex) {
           // this hack is VERY ew
-          if(ex.message.indexOf("has only a getter") > 0) return;
+          if (ex.message.indexOf("has only a getter") > 0) return;
           console.error(ex);
         }
       }
@@ -119,8 +119,18 @@ export function copyPublicProperties(object) {
 }
 
 Object.defineProperty(String.prototype, 'capitalize', {
-  value: function() {
+  value: function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
+  },
+  enumerable: false
+});
+
+Object.defineProperty(Array.prototype, 'removeItem', {
+  value: function (val) {
+    const index = this.indexOf(val);
+    if (index > -1) { // only splice array when item is found
+      this.splice(index, 1); // 2nd parameter means remove one item only
+    }
   },
   enumerable: false
 });

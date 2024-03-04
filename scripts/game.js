@@ -24,6 +24,11 @@ new GameOption({
     value: false
 });
 
+new GameOption({
+    name: 'NotesMode',
+    value: true
+});
+
 const grid = new Grid({
     size: GAME_GRID_SIZE
 });

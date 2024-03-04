@@ -44,7 +44,9 @@ export default class CellRenderer extends Renderer {
         if(this.#cell.color) this.element.style.color = this.#cell.color;
 
         if(GameOption.ShowCoordinates) {
-            this.element.setAttribute('coordinate', `( ${this.#cell.x}, ${this.#cell.y} )`);
+            this.element.setAttribute('notes', `( ${this.#cell.x}, ${this.#cell.y} )`);
+        } else {
+            this.element.setAttribute('notes', this.#cell.notes);
         }
     }
 

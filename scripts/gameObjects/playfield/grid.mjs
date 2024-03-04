@@ -3,6 +3,7 @@ import GameObject from "../gameObject.mjs";
 import Cell from "./cell.mjs";
 import Puzzle from "../../puzzle.mjs";
 import Events from "../../core/events.mjs";
+import GameOption from "../../core/gameOptions.mjs";
 
 export default class Grid extends GameObject {
 
@@ -83,12 +84,16 @@ export default class Grid extends GameObject {
         console.log(cell);
         if (cell.known) return;
 
-        if (number == cell.digit) {
-            cell.wrongGuess = false;
-            cell.known = true;
+        if(GameOption.NotesMode) {
+            cell.toggleNote(number);
         } else {
-            cell.wrongGuess = true;
-            cell.renderText = number;
+            if (number == cell.digit) {
+                cell.wrongGuess = false;
+                cell.known = true;
+            } else {
+                cell.wrongGuess = true;
+                cell.renderText = number;
+            }
         }
     }
 
