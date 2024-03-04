@@ -26,6 +26,7 @@ new GameOption({
 const grid = new Grid({
     size: GAME_GRID_SIZE
 });
+// grid.hide();
 
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);

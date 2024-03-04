@@ -22,7 +22,7 @@ function renderSquare(grid, squareX, squareY) {
     const square = document.createElement('div');
     square.className = 'square';
 
-    grid.graphic.appendChild(square);
+    grid.element.appendChild(square);
 
     const flexContainer = document.createElement('div');
     flexContainer.className = 'flex-container';
@@ -38,18 +38,20 @@ function renderSquare(grid, squareX, squareY) {
 
 function renderGrid(grid) {
 
-    grid.graphic = document.createElement('div');
-    grid.graphic.className = 'grid flex-container';
+    grid.element = document.createElement('div');
+    grid.element.className = 'grid flex-container';
 
     // TODO: replace "document.body" with a fetch to (static) Renderer (property)
     const renderRoot = document.getElementById("game-container");
-    renderRoot.appendChild(grid.graphic);
+    renderRoot.appendChild(grid.element);
 
     for(var y = 0; y < grid.size; y++) {
         for(var x = 0; x < grid.size; x++) {
             renderSquare(grid, x, y);
         }
     }
+
+    // TODO: update for visibility
 
 }
 

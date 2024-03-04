@@ -8,6 +8,10 @@ export default class GameObject {
 
     #visible = true;
     get visible() { return this.#visible; }
+    set visible(value) { 
+        this.#visible = value;
+        this.renderer.update();
+    }
     hide() {
         this.#visible = false;
         this.renderer.update();
