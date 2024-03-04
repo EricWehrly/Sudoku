@@ -1,0 +1,42 @@
+.grid {
+    position: relative;
+}
+
+.grid > div {
+    
+    display: inline-flex;
+    border: 2px solid rgba(50, 50, 50, var(--ui-opacity));
+    flex: 3 29%;
+}
+
+.cell {
+    border: 1px dashed gray;
+    flex: 3 29%;
+    position: relative;
+    
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    min-height: 1em;
+}
+
+.cell:hover {
+    background-color: rgb(100, 100, 220);;
+}
+
+.cell.active {
+    background-color: rgb(60, 60, 180);
+    border: 2px solid blue;
+}
+
+.cell.highlight {
+    background-color: rgba(60, 60, 180, var(--ui-opacity));
+}
+
+.cell:after {
+    content: attr(coordinate);
+    font-size: .4em;
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+}

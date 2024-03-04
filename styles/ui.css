@@ -1,0 +1,11 @@
+#game-container > .ui {
+
+    display: inline-flex;
+    flex-grow: 3;
+    flex-shrink: 1;
+    flex-basis: 10%;
+}
+
+.ui {
+    border: 1px solid gray;
+}
