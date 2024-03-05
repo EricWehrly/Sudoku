@@ -6,6 +6,7 @@ import Ability from "./gameObjects/abilities/ability.mjs";
 import GameOption from "./core/gameOptions.mjs";
 import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
 import './ui/ui.mjs';
+import EquipmentSlot from "./gameObjects/equipmentSlot.mjs";
 
 const GAME_GRID_SIZE = 3;
 
@@ -33,7 +34,7 @@ new GameOption({
 const grid = new Grid({
     size: GAME_GRID_SIZE
 });
-// grid.hide();
+grid.hide();
 
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
@@ -41,4 +42,9 @@ Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 new Ability({
     trigger: Events.List.SudokuGuess,
     action: sixesPointToTwoes
+});
+
+new EquipmentSlot({});
+new EquipmentSlot({
+    size: 3
 });
