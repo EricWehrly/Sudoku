@@ -3,29 +3,37 @@ import Grid from "../../../gameObjects/gameObject.mjs"
 import Renderer from '../renderer.mjs';
 import CellRenderer from './cell.mjs';
 
-// document.body
 // const renderRoot = document.getElementById("game-container");
-// console.log(renderRoot);
 
 export default class GridRenderer extends Renderer {
+
+    #grid;
 
     constructor(grid) {
 
         grid.element = document.createElement('div');
         grid.element.className = 'grid flex-container';
         super(grid);
+        grid.renderer = this;
+        this.#grid = grid;
     
         // TODO: replace "document.body" with a fetch to (static) Renderer (property)
         const renderRoot = document.getElementById("game-container");
         renderRoot.appendChild(grid.element);
+        const style = window.getComputedStyle(this.element);
+        this.element.setAttribute('desiredDisplay', style.display);
     
         for(var y = 0; y < grid.size; y++) {
             for(var x = 0; x < grid.size; x++) {
                 this.#renderSquare(grid, x, y);
             }
         }
-    
-        // TODO: update for visibility
+    }
+
+    update() {
+        
+        if(this.#grid.visible) this.element.style.display = this.element.getAttribute('desiredDisplay');
+        else this.element.style.display = 'none';
     }
 
     #renderSquare(grid, squareX, squareY) {
@@ -62,7 +70,6 @@ export default class GridRenderer extends Renderer {
 Events.Subscribe(Events.List.GameObjectCreated, function(gameObject) {
 
     if(gameObject instanceof Grid) {
-        // renderGrid(gameObject);
         new GridRenderer(gameObject);
     }
 }.bind(this));
