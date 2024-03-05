@@ -1,5 +1,5 @@
 import Events from '../../../core/events.mjs'
-import Grid from "../../../gameObjects/gameObject.mjs"
+import Grid from '../../../gameObjects/playfield/grid.mjs';
 import Renderer from '../renderer.mjs';
 import CellRenderer from './cell.mjs';
 
