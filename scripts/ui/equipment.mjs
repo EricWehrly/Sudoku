@@ -3,6 +3,24 @@ import Renderer from "../rendering/dom/renderer.mjs";
 
 export default class EquipmentRenderer extends Renderer {
 
+    static #equipmentContainer;
+    static {
+        EquipmentRenderer.#equipmentContainer = document.createElement('div');
+
+        EquipmentRenderer.#attachToRoot();
+    }
+
+    static #attachToRoot() {
+
+        const renderRoot = document.getElementById("ui-container");
+        if(renderRoot) {
+            renderRoot.appendChild(EquipmentRenderer.#equipmentContainer);
+        } else {
+            // cap recursion iteration count?
+            setTimeout(EquipmentRenderer.#attachToRoot.bind(this), 10);
+        }
+    }
+
     #equipmentSlot;
 
     constructor(options) {
@@ -13,8 +31,7 @@ export default class EquipmentRenderer extends Renderer {
         options.renderer = this;
         this.#equipmentSlot = options;
 
-        const renderRoot = document.getElementById("ui-container");
-        renderRoot.appendChild(this.element);
+        EquipmentRenderer.#equipmentContainer.appendChild(this.element);
         const style = window.getComputedStyle(this.element);
         this.element.setAttribute('desiredDisplay', style.display);
     }
