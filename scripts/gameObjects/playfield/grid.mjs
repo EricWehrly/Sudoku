@@ -7,6 +7,9 @@ import GameOption from "../../core/gameOptions.mjs";
 
 export default class Grid extends GameObject {
 
+    static #Grid;
+    static get Grid() { return Grid.#Grid; }
+
     static #RANDOM_SIX_DIGIT_NUMBER = Math.floor(100000 + Math.random() * 900000);
 
     #size = 0;
@@ -41,6 +44,8 @@ export default class Grid extends GameObject {
         super(options);
 
         // assert size is an int?
+
+        if(!Grid.#Grid) Grid.#Grid = this;
 
         this.#size = options?.size || 3;
         this.#seed = options?.seed || new Seed(Grid.#RANDOM_SIX_DIGIT_NUMBER);

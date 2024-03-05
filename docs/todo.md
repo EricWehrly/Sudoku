@@ -1,3 +1,7 @@
+each individual block allows 3 guesses
+    before game over
+    shows  signs of breaking with each wrong guess
+
 variable difficulty -- how many pre-filled
 
 Equippable abilities per number
