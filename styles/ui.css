@@ -57,3 +57,11 @@
     top: 50%;                  
     transform: translateY(-50%);
 }
+
+.equipment-slot {
+
+    min-width: 2em;
+    min-height: 2em;
+    border: 1px solid #bbb;
+    background-color: #ddd;
+}

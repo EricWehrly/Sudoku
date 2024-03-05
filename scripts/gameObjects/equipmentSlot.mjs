@@ -33,6 +33,7 @@ export default class EquipmentSlot extends GameObject {
         // if canEquip
 
         this.#equipped = item;
+        this.renderer.update();
         return true;
     }
 }

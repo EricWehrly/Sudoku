@@ -39,12 +39,14 @@ grid.hide();
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 
-new Ability({
+const sixesAbility = new Ability({
     trigger: Events.List.SudokuGuess,
     action: sixesPointToTwoes
 });
 
-new EquipmentSlot({});
-new EquipmentSlot({
+const equip1 = new EquipmentSlot({});
+const equip2 = new EquipmentSlot({
     size: 3
 });
+
+equip1.equip(sixesAbility);

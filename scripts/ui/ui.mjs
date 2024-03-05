@@ -5,3 +5,5 @@ document.body.appendChild(uiContainerParent);
 const uiContainer = document.createElement("div");
 uiContainer.id = "ui-container";
 uiContainerParent.appendChild(uiContainer);
+
+import './equipment.mjs';
