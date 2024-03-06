@@ -17,6 +17,9 @@ export default class EquipmentRenderer extends Renderer {
         const renderRoot = document.getElementById("ui-container");
         if(renderRoot) {
             renderRoot.appendChild(EquipmentRenderer.#equipmentContainer);
+            const title = document.createElement('h3');
+            title.innerHTML = 'Equipped';
+            EquipmentRenderer.#equipmentContainer.appendChild(title);
         } else {
             // cap recursion iteration count?
             setTimeout(EquipmentRenderer.#attachToRoot.bind(this), 10);

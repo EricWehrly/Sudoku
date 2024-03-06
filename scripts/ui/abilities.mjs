@@ -17,6 +17,9 @@ export default class AbilityRenderer extends Renderer {
         const renderRoot = document.getElementById("ui-container");
         if(renderRoot) {
             renderRoot.appendChild(AbilityRenderer.#container);
+            const title = document.createElement('h3');
+            title.innerHTML = 'Abilities';
+            AbilityRenderer.#container.appendChild(title);
         } else {
             // cap recursion iteration count?
             setTimeout(AbilityRenderer.#attachToRoot.bind(this), 10);
