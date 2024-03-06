@@ -1,3 +1,4 @@
+import Events from "../../../core/events.mjs";
 import GameOption from "../../../core/gameOptions.mjs";
 import Renderer from "../renderer.mjs";
 
@@ -23,6 +24,18 @@ export default class CellRenderer extends Renderer {
 
         // cell click toggle active
         this.element.addEventListener("click", this.toggleActive.bind(this), false);
+
+        const that = this;
+        Events.Subscribe(Events.List.EffectAdded, function(details) {
+
+            if(details.cell != that.#cell) return;
+            const effect = details.effect;
+            console.log(effect);
+            that.addClass(effect.name);
+        });
+        Events.Subscribe(Events.List.EffectAdded, function(effect) {
+            // that.addClass(effect.name);
+        });
     }
 
     update(options) {

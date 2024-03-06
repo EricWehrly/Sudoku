@@ -6,6 +6,7 @@ import Ability from "./gameObjects/abilities/ability.mjs";
 import GameOption from "./core/gameOptions.mjs";
 import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
 import './ui/ui.mjs';
+import SquareFreeze from "./gameObjects/malefactors/squareFreeze.mjs";
 
 const GAME_GRID_SIZE = 3;
 
@@ -42,3 +43,5 @@ new Ability({
     trigger: Events.List.SudokuGuess,
     action: sixesPointToTwoes
 });
+
+SquareFreeze();

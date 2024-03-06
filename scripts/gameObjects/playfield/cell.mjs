@@ -1,3 +1,4 @@
+import Events from "../../core/events.mjs";
 import GameObject from "../gameObject.mjs";
 
 export default class Cell extends GameObject {
@@ -15,6 +16,7 @@ export default class Cell extends GameObject {
     #wrongGuess = false;
     #active = false;
     #highlight = false;
+    #effects = [];
     #notes = [];
 
     get x() { return this.#x; }
@@ -174,6 +176,8 @@ export default class Cell extends GameObject {
 
         return exclusions;
     }
+    
+    get effects() { return this.#effects; }
 
     constructor(options) {
 
@@ -188,5 +192,14 @@ export default class Cell extends GameObject {
         this.#color = options.color;
 
         // super.postConstruct();
+    }
+
+    addEffect(effect) {
+
+        this.#effects.push(effect);
+        Events.RaiseEvent(Events.List.EffectAdded, {
+            effect,
+            cell: this
+        });
     }
 }

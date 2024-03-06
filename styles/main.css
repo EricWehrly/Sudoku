@@ -1,5 +1,6 @@
 @import url('./ui.css');
 @import url('./grid.css');
+@import url('./effects.css');
 
 :root {
     --ui-opacity: 0.8;
