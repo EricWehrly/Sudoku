@@ -7,6 +7,7 @@ import GameOption from "./core/gameOptions.mjs";
 import './ui/ui.mjs';
 import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
 import EquipmentSlot from "./gameObjects/equipmentSlot.mjs";
+import Button from "./ui/button.mjs";
 
 const GAME_GRID_SIZE = 3;
 
@@ -25,6 +26,11 @@ new GameOption({
     name: 'ShowCoordinates',
     value: false
 });
+// we'll need to make a generic 'menu' thing here ...
+new GameOption({
+    name: 'ShowAbilitiesMenu',
+    value: false
+});
 
 new GameOption({
     name: 'NotesMode',
@@ -34,7 +40,6 @@ new GameOption({
 const grid = new Grid({
     size: GAME_GRID_SIZE
 });
-grid.hide();
 
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
@@ -53,3 +58,15 @@ const equip2 = new EquipmentSlot({
 });
 
 equip1.equip(sixesAbility);
+
+function toggleAbilities() {
+    console.log('hi!');
+    GameOption.ShowAbilitiesMenu = !GameOption.ShowAbilitiesMenu;
+}
+
+new Button({
+    name: 'Abilities',
+    icon: '📖',
+    classes: 'bottom',
+    action: toggleAbilities
+});

@@ -1,5 +1,9 @@
 // import Listed from "./listed.mjs";
 
+import Events from "./events.mjs";
+
+Events.List.GameOptionChanged = 'GameOptionChanged';
+
 export default class GameOption {
 
     #name;
@@ -24,11 +28,27 @@ export default class GameOption {
             },
             set(newValue) {
                 that.setter(newValue);
+
             },
+        });
+
+        Events.RaiseEvent(Events.List.GameOptionChanged, {
+            option: this,
+            newValue: this.#value
         });
     }
 
     setter(newValue) {
+
+        if(this.#value == newValue) return;
+
+        const oldValue = this.#value;
         this.#value = newValue;
+
+        Events.RaiseEvent(Events.List.GameOptionChanged, {
+            option: this,
+            oldValue,
+            newValue
+        });
     }
 }

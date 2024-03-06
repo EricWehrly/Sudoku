@@ -26,21 +26,21 @@
 
 .ui.top {
     position: absolute;
-    top: 5px;
+    top: 1em;
 }
 
 .ui.bottom {
     position: absolute;
-    bottom: 5px;
+    bottom: 1em;
     align-self: flex-end;
 }
 
 .ui.left {
-    left: 5px;
+    left: 1em;
 }
 
 .ui.right {
-    right: 5px;
+    right: 1em;
 }
 
 .ui.center {    
@@ -51,7 +51,6 @@
 
 .ui.bottom.center {
     position: absolute;
-    bottom: 5px;                
 }
 
 .ui.middle.right {

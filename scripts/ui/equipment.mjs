@@ -11,6 +11,17 @@ export default class EquipmentRenderer extends Renderer {
         EquipmentRenderer.#equipmentContainer.className = "ui equipment container";
 
         EquipmentRenderer.#attachToRoot();
+
+        Events.Subscribe(Events.List.GameOptionChanged, EquipmentRenderer.#gameOptionChanged);
+    }
+
+    static #gameOptionChanged(details) {
+
+        if(details.option.name == 'ShowAbilitiesMenu') {
+
+            if(details.newValue) EquipmentRenderer.#equipmentContainer.style.display = 'block';
+            else EquipmentRenderer.#equipmentContainer.style.display = 'none';
+        }
     }
 
     static #attachToRoot() {

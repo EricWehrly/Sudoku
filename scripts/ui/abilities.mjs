@@ -1,3 +1,4 @@
+import Events from "../core/events.mjs";
 import AbilityAction from "../gameObjects/abilities/abilityAction.mjs";
 import Renderer from "../rendering/dom/renderer.mjs";
 
@@ -10,6 +11,17 @@ export default class AbilityRenderer extends Renderer {
         AbilityRenderer.#container.className = "ui ability container";
 
         AbilityRenderer.#attachToRoot();
+
+        Events.Subscribe(Events.List.GameOptionChanged, AbilityRenderer.#gameOptionChanged);
+    }
+
+    static #gameOptionChanged(details) {
+
+        if(details.option.name == 'ShowAbilitiesMenu') {
+
+            if(details.newValue) AbilityRenderer.#container.style.display = 'block';
+            else AbilityRenderer.#container.style.display = 'none';
+        }
     }
 
     static #attachToRoot() {
