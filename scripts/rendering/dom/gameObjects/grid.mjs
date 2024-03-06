@@ -13,15 +13,13 @@ export default class GridRenderer extends Renderer {
 
         grid.element = document.createElement('div');
         grid.element.className = 'grid flex-container';
-        super(grid);
-        grid.renderer = this;
-        this.#grid = grid;
     
         // TODO: replace "document.body" with a fetch to (static) Renderer (property)
         const renderRoot = document.getElementById("game-container");
         renderRoot.appendChild(grid.element);
-        const style = window.getComputedStyle(this.element);
-        this.element.setAttribute('desiredDisplay', style.display);
+        super(grid);
+        grid.renderer = this;
+        this.#grid = grid;
     
         for(var y = 0; y < grid.size; y++) {
             for(var x = 0; x < grid.size; x++) {

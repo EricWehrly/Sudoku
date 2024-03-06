@@ -34,27 +34,30 @@ export default class EquipmentRenderer extends Renderer {
 
         options.element = document.createElement('div');
         options.element.className = `ui equipment slot x${options.size}`;
+
+        EquipmentRenderer.#equipmentContainer.appendChild(options.element);
         super(options);
         options.renderer = this;
         this.#equipmentSlot = options;
 
-        EquipmentRenderer.#equipmentContainer.appendChild(this.element);
-        const style = window.getComputedStyle(this.element);
-        this.element.setAttribute('desiredDisplay', style.display);
+        this.#renderName(options);
 
-        const name = options.name || this.#equipmentSlot.name;
-        if(name) {
-            const title = document.createElement('span');
-            title.innerHTML = name;
-            this.element.appendChild(title);
-        }
         this.#equippedElement = document.createElement('span');
         this.element.appendChild(this.#equippedElement);
 
         options.element.addEventListener("drop", this.dropHandler.bind(this));
         options.element.addEventListener("dragover", this.onDragOver.bind(this));
-        // options.element.addEventListener("dragenter", this.onDragEnter.bind(this));
         options.element.addEventListener("dragleave", this.onDragLeave.bind(this));
+    }
+
+    #renderName(options) {
+
+        const name = options.name || this.#equipmentSlot.name;
+        if(name) {
+            const title = document.createElement('span');
+            title.innerHTML = `${name}: `;
+            this.element.appendChild(title);
+        }
     }
 
     update() {        
@@ -74,11 +77,6 @@ export default class EquipmentRenderer extends Renderer {
         const ability = AbilityAction[data];
 
         this.#equipmentSlot.equip(ability);
-    }
-
-    onDragEnter(event) {
-
-        this.addClass('highlight');
     }
 
     onDragLeave(event) {

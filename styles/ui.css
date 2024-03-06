@@ -96,6 +96,10 @@
     background-color: white;
 }
 
+.ui.equipment span {
+    display: block;
+}
+
 .ui.equipment.slot.x3 {
 
     min-width: 90%;

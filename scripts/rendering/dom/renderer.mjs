@@ -6,6 +6,9 @@ export default class Renderer {
     constructor(options) {
 
         this.#element = options.element;
+
+        const style = window.getComputedStyle(this.element);
+        if(style.display) this.element.setAttribute('desiredDisplay', style.display);
     }
 
     update(options) { }

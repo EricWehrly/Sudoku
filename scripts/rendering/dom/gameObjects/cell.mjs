@@ -10,16 +10,13 @@ export default class CellRenderer extends Renderer {
         // TODO: assert options
 
         options.element = document.createElement('div');
+        options.containerElement.appendChild(options.element);
         super(options);
         
         this.#cell = options.cell;
         this.#cell.renderer = this;
         this.element.className = 'cell';
         this.update();
-
-        options.containerElement.appendChild(this.element);
-        const style = window.getComputedStyle(this.element);
-        this.element.setAttribute('desiredDisplay', style.display);
 
         // cell click toggle active
         this.element.addEventListener("click", this.toggleActive.bind(this), false);

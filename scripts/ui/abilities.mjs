@@ -32,13 +32,11 @@ export default class AbilityRenderer extends Renderer {
 
         options.element = document.createElement('div');
         options.element.className = `ui ability`;
+
+        AbilityRenderer.container.appendChild(options.element);
         super(options);
         options.renderer = this;
         this.#abilityAction = options;
-
-        AbilityRenderer.container.appendChild(this.element);
-        const style = window.getComputedStyle(this.element);
-        if(style.display) this.element.setAttribute('desiredDisplay', style.display);
 
         this.element.innerHTML = this.#abilityAction.name;
 
