@@ -8,6 +8,7 @@ import './ui/ui.mjs';
 import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
 import EquipmentSlot from "./gameObjects/equipmentSlot.mjs";
 import Button from "./ui/button.mjs";
+import SquareFreeze from "./gameObjects/malefactors/squareFreeze.mjs";
 
 const GAME_GRID_SIZE = 3;
 
@@ -70,3 +71,5 @@ new Button({
     classes: 'bottom',
     action: toggleAbilities
 });
+
+SquareFreeze();
