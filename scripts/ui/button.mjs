@@ -21,7 +21,7 @@ export default class Button extends Renderer {
         if(this.icon) this.element.innerHTML = this.icon;        
         else this.element.innerHTML = this.name;
         
-        const renderRoot = document.getElementById("ui-container");
+        const renderRoot = document.getElementById("ui-container-parent");
         renderRoot.appendChild(options.element);
 
         this.element.addEventListener("click", this.action, false);

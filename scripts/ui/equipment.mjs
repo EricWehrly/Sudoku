@@ -55,6 +55,7 @@ export default class EquipmentRenderer extends Renderer {
 
         this.#equippedElement = document.createElement('span');
         this.element.appendChild(this.#equippedElement);
+        this.update();
 
         options.element.addEventListener("drop", this.dropHandler.bind(this));
         options.element.addEventListener("dragover", this.onDragOver.bind(this));
@@ -74,6 +75,8 @@ export default class EquipmentRenderer extends Renderer {
     update() {        
         if(this.#equipmentSlot?.equipped?.name) {
             this.#equippedElement.innerText = this.#equipmentSlot.equipped.name;
+        } else {
+            this.#equippedElement.innerText = '(none)';
         }
     }
 
