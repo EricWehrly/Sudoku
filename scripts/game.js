@@ -44,7 +44,10 @@ const sixesAbility = new Ability({
     action: sixesPointToTwoes
 });
 
-const equip1 = new EquipmentSlot({});
+const equip1 = new EquipmentSlot({
+    name: 'On Sudoku Guess',
+    trigger: Events.List.SudokuGuess
+});
 const equip2 = new EquipmentSlot({
     size: 3
 });

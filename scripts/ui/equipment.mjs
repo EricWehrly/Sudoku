@@ -39,6 +39,13 @@ export default class EquipmentRenderer extends Renderer {
         EquipmentRenderer.#equipmentContainer.appendChild(this.element);
         const style = window.getComputedStyle(this.element);
         this.element.setAttribute('desiredDisplay', style.display);
+
+        if(options.name) this.element.innerHTML = options.name;
+
+        options.element.addEventListener("drop", this.dropHandler.bind(this));
+        options.element.addEventListener("dragover", this.onDragOver.bind(this));
+        // options.element.addEventListener("dragenter", this.onDragEnter.bind(this));
+        options.element.addEventListener("dragleave", this.onDragLeave.bind(this));
     }
 
     update() {        
@@ -47,6 +54,28 @@ export default class EquipmentRenderer extends Renderer {
         } else {
             this.element.innerHTML = 'Nothing equipped';
         }
+    }
+
+    onDragOver(event) {
+        this.addClass('highlight');
+        event.preventDefault();
+    }
+
+    dropHandler(event) {
+        this.removeClass('highlight');
+        console.log(event);
+
+        // get the ability and try to equip it
+    }
+
+    onDragEnter(event) {
+
+        this.addClass('highlight');
+    }
+
+    onDragLeave(event) {
+
+        this.removeClass('highlight');
     }
 }
 

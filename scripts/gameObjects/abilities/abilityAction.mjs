@@ -8,8 +8,6 @@ export default class AbilityAction extends GameObject {
 
     constructor(options) {
 
-        console.log(options);
-
         super(options);
 
         this.#name = options.name;

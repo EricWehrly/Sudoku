@@ -41,6 +41,16 @@ export default class AbilityRenderer extends Renderer {
         if(style.display) this.element.setAttribute('desiredDisplay', style.display);
 
         this.element.innerHTML = this.#abilityAction.name;
+
+        options.element.draggable = true;
+        options.element.addEventListener("dragstart", this.dragstartHandler.bind(this));
+    }
+    
+    dragstartHandler(ev) {
+
+        // Add the target element's id to the data transfer object
+        // ev.dataTransfer.setData("text/plain", ev.target.id);
+        console.log("Whee!");
     }
 }
 
