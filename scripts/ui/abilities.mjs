@@ -48,9 +48,9 @@ export default class AbilityRenderer extends Renderer {
     
     dragstartHandler(ev) {
 
-        // Add the target element's id to the data transfer object
         // ev.dataTransfer.setData("text/plain", ev.target.id);
-        console.log("Whee!");
+        console.log(this.#abilityAction);
+        ev.dataTransfer.setData('text/plain', this.#abilityAction.name);
     }
 }
 

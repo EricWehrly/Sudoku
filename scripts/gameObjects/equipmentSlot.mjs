@@ -2,6 +2,7 @@ import GameObject from "./gameObject.mjs";
 
 export default class EquipmentSlot extends GameObject {
 
+    #name;
     #equipped;
     #conditions;
     #size = 1;
@@ -10,12 +11,14 @@ export default class EquipmentSlot extends GameObject {
 
     get equipped() { return this.#equipped; }
     get size() { return this.#size; }
+    get name() { return this.#name; }
 
     constructor(options) {
 
         super(options);
         if(options.size) this.#size = options.size;
         this.#conditions = options.conditions;
+        this.#name = options.name;
 
         super.postConstruct();
     }

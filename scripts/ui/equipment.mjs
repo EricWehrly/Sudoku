@@ -1,3 +1,4 @@
+import AbilityAction from "../gameObjects/abilities/abilityAction.mjs";
 import EquipmentSlot from "../gameObjects/equipmentSlot.mjs";
 import Renderer from "../rendering/dom/renderer.mjs";
 
@@ -27,6 +28,7 @@ export default class EquipmentRenderer extends Renderer {
     }
 
     #equipmentSlot;
+    #equippedElement;
 
     constructor(options) {
 
@@ -40,7 +42,14 @@ export default class EquipmentRenderer extends Renderer {
         const style = window.getComputedStyle(this.element);
         this.element.setAttribute('desiredDisplay', style.display);
 
-        if(options.name) this.element.innerHTML = options.name;
+        const name = options.name || this.#equipmentSlot.name;
+        if(name) {
+            const title = document.createElement('span');
+            title.innerHTML = name;
+            this.element.appendChild(title);
+        }
+        this.#equippedElement = document.createElement('span');
+        this.element.appendChild(this.#equippedElement);
 
         options.element.addEventListener("drop", this.dropHandler.bind(this));
         options.element.addEventListener("dragover", this.onDragOver.bind(this));
@@ -49,10 +58,8 @@ export default class EquipmentRenderer extends Renderer {
     }
 
     update() {        
-        if(this.#equipmentSlot.equipped) {
-            this.element.innerHTML = this.#equipmentSlot.equipped.name;
-        } else {
-            this.element.innerHTML = 'Nothing equipped';
+        if(this.#equipmentSlot?.equipped?.name) {
+            this.#equippedElement.innerText = this.#equipmentSlot.equipped.name;
         }
     }
 
@@ -63,9 +70,10 @@ export default class EquipmentRenderer extends Renderer {
 
     dropHandler(event) {
         this.removeClass('highlight');
-        console.log(event);
+        const data = event.dataTransfer.getData("text/plain");
+        const ability = AbilityAction[data];
 
-        // get the ability and try to equip it
+        this.#equipmentSlot.equip(ability);
     }
 
     onDragEnter(event) {
