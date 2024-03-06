@@ -4,8 +4,10 @@ import Renderer from "../rendering/dom/renderer.mjs";
 export default class EquipmentRenderer extends Renderer {
 
     static #equipmentContainer;
+    static get equipmentContainer() { return EquipmentRenderer.#equipmentContainer; }
     static {
         EquipmentRenderer.#equipmentContainer = document.createElement('div');
+        EquipmentRenderer.#equipmentContainer.className = "equipment container";
 
         EquipmentRenderer.#attachToRoot();
     }
@@ -26,7 +28,7 @@ export default class EquipmentRenderer extends Renderer {
     constructor(options) {
 
         options.element = document.createElement('div');
-        options.element.className = "ui equipment-slot";
+        options.element.className = `ui equipment slot x${options.size}`;
         super(options);
         options.renderer = this;
         this.#equipmentSlot = options;

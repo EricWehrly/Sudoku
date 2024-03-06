@@ -58,10 +58,36 @@
     transform: translateY(-50%);
 }
 
-.equipment-slot {
+.equipment.container {
+
+    display: flex;
+    flex-direction: row;
+}
+
+.equipment.slot {
 
     min-width: 2em;
     min-height: 2em;
-    border: 1px solid #bbb;
+    border: 2px solid rgba(50, 50, 50, var(--ui-opacity));
     background-color: #ddd;
+    
+    display: flex;
+    flex-grow: 3;
+    flex-shrink: 1;
+    flex-basis: 29%;
+}
+
+.equipment.slot.x3 {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100%;
+}
+
+.ui.ability {
+    
+    display: flex;
+    flex-grow: 3;
+    flex-shrink: 1;
+    flex-basis: 29%;
+    border: 1px solid black;
 }

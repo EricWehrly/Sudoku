@@ -1,6 +1,7 @@
 import Grid from "../playfield/grid.mjs";
+import AbilityAction from "./abilityAction.mjs";
 
-export default function sixesPointToTwoes() {
+function sixesPointToTwoes() {
 
     const grid = Grid.Grid;
 
@@ -42,3 +43,10 @@ function eligibleCells(cell) {
     return cell.digit == 6
         && cell.known;
 }
+
+const ability = new AbilityAction({
+    name: 'Sixes Point to Twoes',
+    callback: sixesPointToTwoes
+});
+
+export default ability;

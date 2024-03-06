@@ -4,8 +4,8 @@ import './input/keyboard.mjs';
 import Events from "./core/events.mjs";
 import Ability from "./gameObjects/abilities/ability.mjs";
 import GameOption from "./core/gameOptions.mjs";
-import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
 import './ui/ui.mjs';
+import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
 import EquipmentSlot from "./gameObjects/equipmentSlot.mjs";
 
 const GAME_GRID_SIZE = 3;
