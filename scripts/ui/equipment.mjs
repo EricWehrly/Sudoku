@@ -7,7 +7,7 @@ export default class EquipmentRenderer extends Renderer {
     static get equipmentContainer() { return EquipmentRenderer.#equipmentContainer; }
     static {
         EquipmentRenderer.#equipmentContainer = document.createElement('div');
-        EquipmentRenderer.#equipmentContainer.className = "equipment container";
+        EquipmentRenderer.#equipmentContainer.className = "ui equipment container";
 
         EquipmentRenderer.#attachToRoot();
     }

@@ -1,8 +1,27 @@
 import AbilityAction from "../gameObjects/abilities/abilityAction.mjs";
 import Renderer from "../rendering/dom/renderer.mjs";
-import EquipmentRenderer from "./equipment.mjs";
 
 export default class AbilityRenderer extends Renderer {
+
+    static #container;
+    static get container() { return AbilityRenderer.#container; }
+    static {
+        AbilityRenderer.#container = document.createElement('div');
+        AbilityRenderer.#container.className = "ui ability container";
+
+        AbilityRenderer.#attachToRoot();
+    }
+
+    static #attachToRoot() {
+
+        const renderRoot = document.getElementById("ui-container");
+        if(renderRoot) {
+            renderRoot.appendChild(AbilityRenderer.#container);
+        } else {
+            // cap recursion iteration count?
+            setTimeout(AbilityRenderer.#attachToRoot.bind(this), 10);
+        }
+    }
 
     #abilityAction;
 
@@ -14,7 +33,7 @@ export default class AbilityRenderer extends Renderer {
         options.renderer = this;
         this.#abilityAction = options;
 
-        EquipmentRenderer.equipmentContainer.appendChild(this.element);
+        AbilityRenderer.container.appendChild(this.element);
         const style = window.getComputedStyle(this.element);
         if(style.display) this.element.setAttribute('desiredDisplay', style.display);
 
