@@ -7,8 +7,8 @@ export default class Events {
         "GameStart": "GameStart",
         "GameObjectCreated": "GameObjectCreated",
         'SudokuGuess': 'SudokuGuess',
-        'SudokuGuess': 'SudokuGuessCorrect',
-        'SudokuGuess': 'SudokuGuessWrong'
+        'SudokuGuessCorrect': 'SudokuGuessCorrect',
+        'SudokuGuessWrong': 'SudokuGuessWrong'
     }
 
     static #Subscriptions = {};

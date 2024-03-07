@@ -27,11 +27,13 @@ export default class CellRenderer extends Renderer {
 
             if(details.cell != that.#cell) return;
             const effect = details.effect;
-            console.log(effect);
             that.addClass(effect.name);
         });
-        Events.Subscribe(Events.List.EffectAdded, function(effect) {
-            // that.addClass(effect.name);
+        Events.Subscribe(Events.List.EffectRemoved, function(details) {
+
+            if(details.cell != that.#cell) return;
+            const effect = details.effect;
+            that.removeClass(effect.name);
         });
     }
 

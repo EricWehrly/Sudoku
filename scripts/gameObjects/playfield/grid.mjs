@@ -95,9 +95,12 @@ export default class Grid extends GameObject {
             if (number == cell.digit) {
                 cell.wrongGuess = false;
                 cell.known = true;
+                cell.renderText = number;
+                Events.RaiseEvent(Events.List.SudokuGuessCorrect, { cell });
             } else {
                 cell.wrongGuess = true;
                 cell.renderText = number;
+                Events.RaiseEvent(Events.List.SudokuGuessWrong, { cell });
             }
         }
     }

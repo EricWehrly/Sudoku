@@ -203,4 +203,12 @@ export default class Cell extends GameObject {
             cell: this
         });
     }
+
+    removeEffect(effect) {
+
+        const index = this.#effects.indexOf(effect);
+        if(index > -1) {
+            this.#effects = this.#effects.splice(index, 1);
+        }
+    }
 }
