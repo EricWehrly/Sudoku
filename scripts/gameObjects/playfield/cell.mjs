@@ -152,7 +152,8 @@ export default class Cell extends GameObject {
 
     get squareCells() {
 
-        return this.#grid.getCells(cell => cell.squareCoords == this.squareCoords);
+        return this.#grid.getCells(cell => cell.squareCoords.x == this.squareCoords.x 
+            && cell.squareCoords.y == this.squareCoords.y);
     }
 
     get connectedCells() {
