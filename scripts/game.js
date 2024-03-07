@@ -61,8 +61,12 @@ const equip2 = new EquipmentSlot({
 equip1.equip(sixesAbility);
 
 function toggleAbilities() {
-    console.log('hi!');
     GameOption.ShowAbilitiesMenu = !GameOption.ShowAbilitiesMenu;
+}
+
+function toggleNotes() {
+    GameOption.NotesMode = !GameOption.NotesMode;
+    console.log(`NotesMode is now ${GameOption.NotesMode}`);
 }
 
 new Button({
@@ -70,6 +74,13 @@ new Button({
     icon: '📖',
     classes: 'bottom',
     action: toggleAbilities
+});
+
+const notesButton = new Button({
+    name: 'Notes',
+    icon: '( Notes ) ',
+    classes: 'bottom',
+    action: toggleNotes
 });
 
 SquareFreeze();
