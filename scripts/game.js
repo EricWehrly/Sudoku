@@ -7,7 +7,7 @@ import GameOption from "./core/gameOptions.mjs";
 import './ui/ui.mjs';
 import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
 import EquipmentSlot from "./gameObjects/equipmentSlot.mjs";
-import SquareFreeze from "./gameObjects/malefactors/squareFreeze.mjs";
+import Malefactors from "./gameObjects/malefactors/malefactors.mjs";
 
 const GAME_GRID_SIZE = 3;
 
@@ -34,7 +34,7 @@ new GameOption({
 
 new GameOption({
     name: 'NotesMode',
-    value: true
+    value: false
 });
 
 new Grid({
@@ -59,4 +59,4 @@ const equip2 = new EquipmentSlot({
 
 equip1.equip(sixesAbility);
 
-SquareFreeze();
+Malefactors.CellFlame.enable();

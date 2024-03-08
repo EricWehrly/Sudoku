@@ -3,3 +3,10 @@
     background-color: aliceblue;
     opacity: .8;
 }
+
+.cell.Aflame {
+
+    border: 5px rgba(255, 0, 0, .4);
+    border-style: inset;
+    border-radius: 5px;
+}
