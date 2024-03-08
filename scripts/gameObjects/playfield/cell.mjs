@@ -23,6 +23,7 @@ export default class Cell extends GameObject {
     get y() { return this.#y; }
     get digit() { return this.#digit; }
     get color() { return this.#color; }
+    get effects() { return this.#effects; }
 
     get prefill() { return this.#prefill; }
     set prefill(value) { 
@@ -165,6 +166,11 @@ export default class Cell extends GameObject {
         ];
 
         return cells;
+    }
+
+    get adjacentCells() {
+
+        return this.#grid.getCells(cell => Math.abs(cell.x - this.x) + Math.abs(cell.y - this.y) == 1)
     }
 
     get exclusions() {
