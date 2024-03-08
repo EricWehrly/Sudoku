@@ -22,6 +22,10 @@ magic, spells, sci-fi -- cool orthoganal avenues
 colors & elemental statuses
 spy shit in the numbers, grids, sections? (missions to try to identify a particular one)
 
+vines / fire that spreads from wrong guesses
+    and obviously you lose if it saturates the board
+    spread each 'turn' / guess, NOT real time
+
 Challenge ideas:
 Finish within x time
 Reduce # of guesses

@@ -7,7 +7,6 @@ import GameOption from "./core/gameOptions.mjs";
 import './ui/ui.mjs';
 import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
 import EquipmentSlot from "./gameObjects/equipmentSlot.mjs";
-import Button from "./ui/button.mjs";
 import SquareFreeze from "./gameObjects/malefactors/squareFreeze.mjs";
 
 const GAME_GRID_SIZE = 3;
@@ -38,7 +37,7 @@ new GameOption({
     value: true
 });
 
-const grid = new Grid({
+new Grid({
     size: GAME_GRID_SIZE
 });
 
@@ -59,28 +58,5 @@ const equip2 = new EquipmentSlot({
 });
 
 equip1.equip(sixesAbility);
-
-function toggleAbilities() {
-    GameOption.ShowAbilitiesMenu = !GameOption.ShowAbilitiesMenu;
-}
-
-function toggleNotes() {
-    GameOption.NotesMode = !GameOption.NotesMode;
-    console.log(`NotesMode is now ${GameOption.NotesMode}`);
-}
-
-new Button({
-    name: 'Abilities',
-    icon: '📖',
-    classes: 'bottom',
-    action: toggleAbilities
-});
-
-const notesButton = new Button({
-    name: 'Notes',
-    icon: '( Notes ) ',
-    classes: 'bottom',
-    action: toggleNotes
-});
 
 SquareFreeze();

@@ -1,28 +1,25 @@
-import Renderer from "../rendering/dom/renderer.mjs";
+import UIElement from "../rendering/dom/ui/uiElement.mjs";
 
-export default class Button extends Renderer {
+export default class Button extends UIElement {
 
-    #name;
     #action;
     #icon;
-    get name() { return this.#name; }
     get action() { return this.#action; }
     get icon() { return this.#icon; }
+    set icon(value) {
+        this.#icon = value;
+        this.element.innerHTML = this.#icon;
+    }
 
     constructor(options) {
 
-        options.element = document.createElement('div');
-        options.element.className = `ui button ${options.name} ${options.classes}`;
         super(options);
-        this.#name = options.name;
+        this.addClass('button');
         this.#action = options.action;
         if(options.icon) this.#icon = options.icon;
 
         if(this.icon) this.element.innerHTML = this.icon;        
         else this.element.innerHTML = this.name;
-        
-        const renderRoot = document.getElementById("ui-container-parent");
-        renderRoot.appendChild(options.element);
 
         this.element.addEventListener("click", this.action, false);
     }
