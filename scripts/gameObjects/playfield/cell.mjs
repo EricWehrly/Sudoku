@@ -210,5 +210,9 @@ export default class Cell extends GameObject {
         if(index > -1) {
             this.#effects = this.#effects.splice(index, 1);
         }
+        Events.RaiseEvent(Events.List.EffectRemoved, {
+            effect,
+            cell: this
+        });
     }
 }
