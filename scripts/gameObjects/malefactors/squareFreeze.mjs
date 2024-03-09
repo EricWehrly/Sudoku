@@ -1,10 +1,11 @@
 import Events from "../../core/events.mjs";
 import Effect from "../effects/effect.mjs";
 import Grid from "../playfield/grid.mjs";
+import Malefactor from "./malefactor.mjs";
 
 const frozen = new Effect('Frozen');
 
-export default function SquareFreeze() {
+function squareFreeze() {
 
     // pick a random square
     // set a status effect of 'frozen' to each cell in the square
@@ -29,3 +30,10 @@ function checkUnfreeze(details) {
         cell.removeEffect(frozen);
     });
 }
+
+const SquareFreeze = new Malefactor({
+    name: 'SquareFreeze',
+    onEnable: squareFreeze
+});
+
+export default SquareFreeze;

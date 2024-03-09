@@ -6,6 +6,7 @@ export default class Malefactor {
     #enabled = false;
     #name;
     #effect;
+    #onEnable;
     get name() { return this.#name; }
 
     constructor(options) {
@@ -14,6 +15,7 @@ export default class Malefactor {
 
         if(options.effect) this.#effect = options.effect;
         if(options.enabled) this.#enabled = options.enabled;
+        if(options.onEnable) this.#onEnable = options.onEnable;
 
         this.#name = options.name;
 
@@ -24,6 +26,8 @@ export default class Malefactor {
 
     enable() {
         this.#enabled = true;
+
+        if(this.#onEnable) this.#onEnable();
     }
 
     disable() {
