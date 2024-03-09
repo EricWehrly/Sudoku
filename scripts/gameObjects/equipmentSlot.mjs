@@ -2,6 +2,20 @@ import GameObject from "./gameObject.mjs";
 
 export default class EquipmentSlot extends GameObject {
 
+    static #slots = [];
+
+    static GetSlot(ability) {
+
+        for(var index = 0; index < EquipmentSlot.#slots.length; index++) {
+
+            if(EquipmentSlot.#slots[index].equipped == ability) {
+                return EquipmentSlot.#slots[index];
+            }
+        }
+
+        return false;
+    }
+
     #name;
     #equipped;
     #conditions;
@@ -19,6 +33,7 @@ export default class EquipmentSlot extends GameObject {
         if(options.size) this.#size = options.size;
         this.#conditions = options.conditions;
         this.#name = options.name;
+        EquipmentSlot.#slots.push(this);
 
         super.postConstruct();
     }
