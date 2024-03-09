@@ -88,7 +88,7 @@ export default class Grid extends GameObject {
     #sudokuGuess(number) {
 
         const cell = this.#active;
-        console.log(cell);
+        console.log(cell.digit);
         if (cell.known) return;
 
         if(GameOption.NotesMode) {
@@ -110,6 +110,9 @@ export default class Grid extends GameObject {
         cell.known = true;
         cell.renderText = number;
         Events.RaiseEvent(Events.List.SudokuGuessCorrect, { cell });
+
+        const square = cell.square;
+        if(square.solved) Events.RaiseEvent(Events.List.SudokuSquareCorrect, { square });
     }
 
     #addCells() {

@@ -8,7 +8,8 @@ export default class Events {
         "GameObjectCreated": "GameObjectCreated",
         'SudokuGuess': 'SudokuGuess',
         'SudokuGuessCorrect': 'SudokuGuessCorrect',
-        'SudokuGuessWrong': 'SudokuGuessWrong'
+        'SudokuGuessWrong': 'SudokuGuessWrong',
+        'SudokuSquareCorrect': 'SudokuSquareCorrect'
     }
 
     static #Subscriptions = {};

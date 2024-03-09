@@ -1,9 +1,11 @@
 import Events from "../../core/events.mjs";
 import GameObject from "../gameObject.mjs";
+import GridSquare from "./gridSquare.mjs";
 
 export default class Cell extends GameObject {
 
     #grid;
+    #square;
     #x;
     #y;
     #digit;
@@ -115,6 +117,18 @@ export default class Cell extends GameObject {
         this.renderer.update();
     }
 
+    get square() {
+
+        if(!this.#square) {
+
+            this.#square = new GridSquare({
+                cell: this
+            });
+        }
+
+        return this.#square;
+    }
+
     get squareCoords() {
 
         if(!this.#squareCoords) {
@@ -129,6 +143,12 @@ export default class Cell extends GameObject {
         }
 
         return this.#squareCoords;
+    }
+
+    get squareCells() {
+
+        return this.#grid.getCells(cell => cell.squareCoords.x == this.squareCoords.x 
+            && cell.squareCoords.y == this.squareCoords.y);
     }
 
     get rowCells() {
@@ -149,12 +169,6 @@ export default class Cell extends GameObject {
         }
 
         return cells;
-    }
-
-    get squareCells() {
-
-        return this.#grid.getCells(cell => cell.squareCoords.x == this.squareCoords.x 
-            && cell.squareCoords.y == this.squareCoords.y);
     }
 
     get connectedCells() {

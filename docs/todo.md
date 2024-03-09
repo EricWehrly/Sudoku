@@ -1,3 +1,15 @@
+clear cell notes on correct guess
+
+arrow keys on keyboard
+
+purchasable ability to visualize more when selecting
+    rank 0: show selected tile
+    rank 1: show all in row + column (this is the current implementation)
+    rank 2: also highlight known cells with same number
+    rank 3: show all 'blocked' by # (propogate rank 1 to other cells)
+
+implement purchasable things but start the player with 999 money
+
 each individual block allows 3 guesses
     before game over
     shows  signs of breaking with each wrong guess
@@ -36,8 +48,3 @@ Cannot guess same wrong #s until they're right
 Must fill in X last
 Limited notes?
 Render guessed #s invisible
-
-freezing mechanic:
-    (AI / antagonist) chosen square gets 'frozen'
-    cells must be unfrozen individually
-    by successfully guessing cells in same col / row
