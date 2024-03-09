@@ -7,6 +7,9 @@ export default class Ability {
     #action;
     #level = 0;
     get level() { return this.#level; }
+    set level(value) {
+        this.#level = value;
+    }
 
     /**
      * 
@@ -24,11 +27,16 @@ export default class Ability {
         Events.Subscribe(this.#trigger, this.#handleTrigger.bind(this));
     }
 
-    #handleTrigger() {
+    #handleTrigger(details) {
 
-        // if the ability is equipped?
         const equipmentSlot = EquipmentSlot.GetSlot(this);
-        console.log(equipmentSlot);
-        this.#action.bind(this)();
+        if(equipmentSlot) {
+            const options = {
+                ability: this,
+                equipmentSlot,
+                ...details
+            };
+            this.#action(options);
+        }
     }
 }

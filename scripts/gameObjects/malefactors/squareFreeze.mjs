@@ -24,7 +24,6 @@ function squareFreeze() {
 
 function checkUnfreeze(details) {
 
-    console.log("Right answer!");
     const cells = details.cell.connectedCells;
     cells.forEach(cell => {
         cell.removeEffect(frozen);
