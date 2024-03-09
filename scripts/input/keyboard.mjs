@@ -12,9 +12,8 @@ function handleKeyDown(event) {
     }
 
     if(event.key == 'n') {
-        GameOption.HintMode = !GameOption.HintMode;
+        GameOption.NotesMode = !GameOption.NotesMode;
     }
 }
 
-// window.addEventListener('keydown', this.handleKeyDown.bind(this));
 window.addEventListener('keydown', handleKeyDown);
