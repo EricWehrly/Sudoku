@@ -109,6 +109,7 @@ export default class Grid extends GameObject {
         cell.wrongGuess = false;
         cell.known = true;
         cell.renderText = number;
+        cell.clearNotes();
         Events.RaiseEvent(Events.List.SudokuGuessCorrect, { cell });
 
         const square = cell.square;

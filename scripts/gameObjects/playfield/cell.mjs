@@ -117,6 +117,12 @@ export default class Cell extends GameObject {
         this.renderer.update();
     }
 
+    clearNotes() {
+
+        this.#notes = [];
+        this.renderer.update();
+    }
+
     get square() {
 
         if(!this.#square) {
