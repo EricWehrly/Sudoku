@@ -75,12 +75,6 @@ export default class Cell extends GameObject {
             Events.RaiseEvent(Events.List.CellActive, { cell: this });
         }
 
-        const that = this;
-        this.#grid.cells.forEach(function deActivate(cell) {
-            if(cell == that) return;
-            // cell.active = false;
-            cell.highlight = value == true && (cell.x == that.x || cell.y == that.y);
-        })
         this.#active = value;
 
         this.renderer.update();

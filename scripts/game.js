@@ -45,6 +45,25 @@ new Grid({
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 
+function visionCallback(options) {
+
+   const { ability, cell } = options;
+   if(ability.level > 0) {
+        Grid.Grid.cells.forEach(function highlight(gridCell) {
+            if(gridCell.active) return;
+            gridCell.highlight = (cell.x == gridCell.x || cell.y == gridCell.y);
+        });
+   }
+}
+
+const visionAbility = new Ability({
+
+    trigger: Events.List.CellActive,
+    action: visionCallback,
+    maxLevel: 3
+});
+visionAbility.level++;
+
 const sixesAbility = new Ability({
     trigger: Events.List.SudokuGuess,
     action: sixesPointToTwoes
@@ -58,6 +77,7 @@ const equip2 = new EquipmentSlot({
     size: 3
 });
 
-equip1.equip(sixesAbility);
+// Events.RaiseEvent(Events.List.SudokuSquareCorrect, {});
 
-Malefactors.CellFlame.enable();
+// equip1.equip(sixesAbility);
+equip2.equip(visionAbility);
