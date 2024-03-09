@@ -10,8 +10,10 @@ export default class Events {
         'SudokuGuess': 'SudokuGuess',
         'SudokuGuessCorrect': 'SudokuGuessCorrect',
         'SudokuGuessWrong': 'SudokuGuessWrong',
-        'SudokuSquareCorrect': 'SudokuSquareCorrect'
-    }
+        'SudokuSquareCorrect': 'SudokuSquareCorrect',
+        'EffectAdded': 'EffectAdded',
+        'EffectRemoved': 'EffectRemoved'
+    };
 
     static #Subscriptions = {};
 

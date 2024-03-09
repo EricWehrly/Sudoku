@@ -1,9 +1,6 @@
 import Events from "../../core/events.mjs";
 import Grid from "../playfield/grid.mjs";
 
-Events.List.EffectAdded = "EffectAdded";
-Events.List.EffectRemoved = "EffectRemoved";
-
 export default class Effect {
 
     #actionOnTurn;
