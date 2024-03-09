@@ -32,7 +32,7 @@ function checkUnfreeze(details) {
 
 const SquareFreeze = new Malefactor({
     name: 'SquareFreeze',
-    onEnable: squareFreeze
+    onActivate: squareFreeze
 });
 
 export default SquareFreeze;

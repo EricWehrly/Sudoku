@@ -3,20 +3,20 @@ import Util from "../../util.mjs";
 
 export default class Malefactor {
 
-    #enabled = false;
+    #activated = false;
     #name;
     #effect;
-    #onEnable;
+    #onActivate;
     get name() { return this.#name; }
-    get enabled() { return this.#enabled; }
+    get activated() { return this.#activated; }
 
     constructor(options) {
 
         if(!Util.AssertProperty(options, 'name', this)) return null;
 
         if(options.effect) this.#effect = options.effect;
-        if(options.enabled) this.#enabled = options.enabled;
-        if(options.onEnable) this.#onEnable = options.onEnable;
+        if(options.activated) this.#activated = options.activated;
+        if(options.onActivate) this.#onActivate = options.onActivate;
 
         this.#name = options.name;
 
@@ -25,19 +25,19 @@ export default class Malefactor {
         Events.Subscribe(Events.List.SudokuGuessWrong, this.#wrong.bind(this));
     }
 
-    enable() {
-        this.#enabled = true;
+    activate() {
+        this.#activated = true;
 
-        if(this.#onEnable) this.#onEnable();
+        if(this.#onActivate) this.#onActivate();
     }
 
     disable() {
-        this.#enabled = false;
+        this.#activated = false;
     }
 
     #wrong(details) {
 
         console.log(details.cell);
-        if(this.#enabled && this.#effect) details.cell.addEffect(this.#effect);
+        if(this.#activated && this.#effect) details.cell.addEffect(this.#effect);
     }
 }
