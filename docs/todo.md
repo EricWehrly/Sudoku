@@ -1,7 +1,3 @@
-clear cell notes on correct guess
-
-arrow keys on keyboard
-
 purchasable ability to visualize more when selecting
     rank 0: show selected tile
     rank 1: show all in row + column (this is the current implementation)
