@@ -13,11 +13,12 @@ export default class Grid extends GameObject {
     static #RANDOM_SIX_DIGIT_NUMBER = Math.floor(100000 + Math.random() * 900000);
 
     #size = 0;
-
     get size() { return this.#size; }
 
     #cells = [[],];
     get cells() { return this.#cells.flat(); }
+
+    #prefillCount = 9;
 
     #active;
     get active() { return this.#active; }
@@ -49,6 +50,7 @@ export default class Grid extends GameObject {
 
         this.#size = options?.size || 3;
         this.#seed = options?.seed || new Seed(Grid.#RANDOM_SIX_DIGIT_NUMBER);
+        if(options.prefillCount) this.#prefillCount = options.prefillCount;
 
         this.#addCells();
         this.#makePrefills();
@@ -93,16 +95,21 @@ export default class Grid extends GameObject {
             cell.toggleNote(number);
         } else {
             if (number == cell.digit) {
-                cell.wrongGuess = false;
-                cell.known = true;
-                cell.renderText = number;
-                Events.RaiseEvent(Events.List.SudokuGuessCorrect, { cell });
+                this.#sudokuGuessCorrect(cell, number);
             } else {
                 cell.wrongGuess = true;
                 cell.renderText = number;
                 Events.RaiseEvent(Events.List.SudokuGuessWrong, { cell });
             }
         }
+    }
+
+    #sudokuGuessCorrect(cell, number) {
+
+        cell.wrongGuess = false;
+        cell.known = true;
+        cell.renderText = number;
+        Events.RaiseEvent(Events.List.SudokuGuessCorrect, { cell });
     }
 
     #addCells() {
@@ -126,7 +133,7 @@ export default class Grid extends GameObject {
     #makePrefills() {
 
         const maxCells = this.#size * this.#size * this.#size * this.#size;
-        let prefillCount = 9;
+        let prefillCount = this.#prefillCount;
 
         while (prefillCount > 0) {
             const cellIndex = Math.floor(this.#seed.random(0, maxCells));

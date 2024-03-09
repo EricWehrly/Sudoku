@@ -38,7 +38,8 @@ new GameOption({
 });
 
 new Grid({
-    size: GAME_GRID_SIZE
+    size: GAME_GRID_SIZE,
+    prefillCount: 24
 });
 
 const gameStartOptions = { finalFire: true };
