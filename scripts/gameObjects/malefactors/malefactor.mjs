@@ -8,6 +8,7 @@ export default class Malefactor {
     #effect;
     #onEnable;
     get name() { return this.#name; }
+    get enabled() { return this.#enabled; }
 
     constructor(options) {
 
