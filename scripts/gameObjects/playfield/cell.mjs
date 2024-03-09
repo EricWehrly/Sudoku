@@ -67,6 +67,8 @@ export default class Cell extends GameObject {
 
         if(this.#active == value) return;
 
+        this.#grid.cells.forEach(cell => cell.highlight = false);
+
         if(value == true) {
             if(this.#grid.active) {
                 this.#grid.active.active = false;
@@ -82,6 +84,8 @@ export default class Cell extends GameObject {
 
     get highlight() { return this.#highlight; }
     set highlight(value) { 
+
+        if(value == this.#highlight) return;
 
         this.#highlight = value;
         this.renderer.update();
@@ -212,8 +216,6 @@ export default class Cell extends GameObject {
         this.#y = options.y;
         this.#digit = options.digit;
         this.#color = options.color;
-
-        // super.postConstruct();
     }
 
     addEffect(effect) {

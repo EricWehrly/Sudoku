@@ -52,8 +52,7 @@ const visionAbility = new Ability({
     action: cellVision,
     maxLevel: 3
 });
-visionAbility.level++;
-visionAbility.level++;
+visionAbility.level = 3;
 
 const sixesAbility = new Ability({
     trigger: Events.List.SudokuGuess,
@@ -68,7 +67,7 @@ const equip2 = new EquipmentSlot({
     size: 3
 });
 
-Events.RaiseEvent(Events.List.SudokuSquareCorrect, {});
+// Events.RaiseEvent(Events.List.SudokuSquareCorrect, {});
 
 // equip1.equip(sixesAbility);
 equip2.equip(visionAbility);
