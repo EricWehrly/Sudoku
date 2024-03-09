@@ -1,5 +1,6 @@
 import Events from "../core/events.mjs";
 import GameOption from "../core/gameOptions.mjs";
+import Grid from "../gameObjects/playfield/grid.mjs";
 
 function handleKeyDown(event) {
 
@@ -13,6 +14,34 @@ function handleKeyDown(event) {
 
     if(event.key == 'n') {
         GameOption.NotesMode = !GameOption.NotesMode;
+    }
+
+    if(event.key == 'ArrowDown') {
+        const active = Grid.Grid.active;
+        if(active) {
+            Grid.Grid.cell(active.x, active.y + 1).active = true;
+        }
+    }
+    
+    if(event.key == 'ArrowUp') {
+        const active = Grid.Grid.active;
+        if(active) {
+            Grid.Grid.cell(active.x, active.y - 1).active = true;
+        }
+    }
+    
+    if(event.key == 'ArrowLeft') {
+        const active = Grid.Grid.active;
+        if(active) {
+            Grid.Grid.cell(active.x - 1, active.y).active = true;
+        }
+    }
+    
+    if(event.key == 'ArrowRight') {
+        const active = Grid.Grid.active;
+        if(active) {
+            Grid.Grid.cell(active.x + 1, active.y).active = true;
+        }
     }
 }
 
