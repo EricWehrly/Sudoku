@@ -11,6 +11,7 @@ export default class Effect {
 
         if(typeof options == 'string') this.#name = options;
         else this.#name = options.name;
+        Effect[this.#name] = this;
 
         if(options.actionOnTurn) this.#actionOnTurn = options.actionOnTurn;
 
@@ -28,3 +29,7 @@ export default class Effect {
         return Grid.Grid.getCells(cell => cell.effects.includes(this));
     }
 }
+
+const debugEffect = new Effect({
+    name: 'Debug'
+});
