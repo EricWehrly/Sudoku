@@ -35,7 +35,7 @@
 
 .cell:after {
     content: attr(notes);
-    font-size: .4em;
+    font-size: .7em;
     position: absolute;
     right: 6px;
     bottom: 6px;
