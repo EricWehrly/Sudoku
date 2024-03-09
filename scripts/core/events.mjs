@@ -4,8 +4,9 @@ import { generateId } from "../util/javascript-extensions.mjs"
 export default class Events {
 
     static List = {
-        "GameStart": "GameStart",
-        "GameObjectCreated": "GameObjectCreated",
+        'GameStart': 'GameStart',
+        'GameObjectCreated': 'GameObjectCreated',
+        'CellActive': 'CellActive',
         'SudokuGuess': 'SudokuGuess',
         'SudokuGuessCorrect': 'SudokuGuessCorrect',
         'SudokuGuessWrong': 'SudokuGuessWrong',

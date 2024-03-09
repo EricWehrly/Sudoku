@@ -72,6 +72,7 @@ export default class Cell extends GameObject {
                 this.#grid.active.active = false;
             }
             this.#grid.active = this;
+            Events.RaiseEvent(Events.List.CellActive, { cell: this });
         }
 
         const that = this;
