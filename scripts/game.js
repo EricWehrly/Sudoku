@@ -6,6 +6,7 @@ import Ability from "./gameObjects/abilities/ability.mjs";
 import GameOption from "./core/gameOptions.mjs";
 import './ui/ui.mjs';
 import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
+import cellVision from "./gameObjects/abilities/cellVision.mjs"
 import EquipmentSlot from "./gameObjects/equipmentSlot.mjs";
 import Malefactors from "./gameObjects/malefactors/malefactors.mjs";
 
@@ -45,23 +46,13 @@ new Grid({
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 
-function visionCallback(options) {
-
-   const { ability, cell } = options;
-   if(ability.level > 0) {
-        Grid.Grid.cells.forEach(function highlight(gridCell) {
-            if(gridCell.active) return;
-            gridCell.highlight = (cell.x == gridCell.x || cell.y == gridCell.y);
-        });
-   }
-}
-
 const visionAbility = new Ability({
 
     trigger: Events.List.CellActive,
-    action: visionCallback,
+    action: cellVision,
     maxLevel: 3
 });
+visionAbility.level++;
 visionAbility.level++;
 
 const sixesAbility = new Ability({
@@ -77,7 +68,7 @@ const equip2 = new EquipmentSlot({
     size: 3
 });
 
-// Events.RaiseEvent(Events.List.SudokuSquareCorrect, {});
+Events.RaiseEvent(Events.List.SudokuSquareCorrect, {});
 
 // equip1.equip(sixesAbility);
 equip2.equip(visionAbility);
