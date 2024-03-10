@@ -5,7 +5,9 @@ export default class Ability {
 
     #trigger;
     #action;
+    #cost;
     #level = 0;
+    get cost() { return this.#cost; }
     get level() { return this.#level; }
     set level(value) {
         this.#level = value;
@@ -23,6 +25,17 @@ export default class Ability {
 
         this.#trigger = options.trigger;
         this.#action = options.action;
+
+        if(options.costFunction) {
+            this.#cost = options.costFunction;
+            Object.defineProperty(this, 'cost', {
+                get() {
+                    return this.#cost();
+                }
+            });
+        } else if (options.cost) {
+            this.#cost = options.cost;
+        }
 
         Events.Subscribe(this.#trigger, this.#handleTrigger.bind(this));
     }

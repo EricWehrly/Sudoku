@@ -26,6 +26,7 @@ export default class Cell extends GameObject {
     get digit() { return this.#digit; }
     get color() { return this.#color; }
     get effects() { return this.#effects; }
+    get grid() { return this.#grid; }
 
     get prefill() { return this.#prefill; }
     set prefill(value) { 
