@@ -4,11 +4,11 @@ import Renderer from "../rendering/dom/renderer.mjs";
 
 export default class EquipmentRenderer extends Renderer {
 
-    static #equipmentContainer;
-    static get equipmentContainer() { return EquipmentRenderer.#equipmentContainer; }
+    static #container;
+    static get container() { return EquipmentRenderer.#container; }
     static {
-        EquipmentRenderer.#equipmentContainer = document.createElement('div');
-        EquipmentRenderer.#equipmentContainer.className = "ui equipment container";
+        EquipmentRenderer.#container = document.createElement('div');
+        EquipmentRenderer.#container.className = "ui equipment container";
 
         EquipmentRenderer.#attachToRoot();
 
@@ -19,8 +19,8 @@ export default class EquipmentRenderer extends Renderer {
 
         if(details.option.name == 'ShowAbilitiesMenu') {
 
-            if(details.newValue) EquipmentRenderer.#equipmentContainer.style.display = 'block';
-            else EquipmentRenderer.#equipmentContainer.style.display = 'none';
+            if(details.newValue) EquipmentRenderer.#container.style.display = 'block';
+            else EquipmentRenderer.#container.style.display = 'none';
         }
     }
 
@@ -28,10 +28,10 @@ export default class EquipmentRenderer extends Renderer {
 
         const renderRoot = document.getElementById("ui-container");
         if(renderRoot) {
-            renderRoot.appendChild(EquipmentRenderer.#equipmentContainer);
+            renderRoot.appendChild(EquipmentRenderer.#container);
             const title = document.createElement('h3');
             title.innerHTML = 'Equipped';
-            EquipmentRenderer.#equipmentContainer.appendChild(title);
+            EquipmentRenderer.#container.appendChild(title);
         } else {
             // cap recursion iteration count?
             setTimeout(EquipmentRenderer.#attachToRoot.bind(this), 10);
@@ -46,7 +46,7 @@ export default class EquipmentRenderer extends Renderer {
         options.element = document.createElement('div');
         options.element.className = `ui equipment slot x${options.size}`;
 
-        EquipmentRenderer.#equipmentContainer.appendChild(options.element);
+        EquipmentRenderer.#container.appendChild(options.element);
         super(options);
         options.renderer = this;
         this.#equipmentSlot = options;

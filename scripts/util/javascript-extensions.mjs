@@ -134,3 +134,31 @@ Object.defineProperty(Array.prototype, 'removeItem', {
   },
   enumerable: false
 });
+
+export function detachChildrenFromElement(element) {
+
+  while (element.firstChild) {
+    element.removeChild(element.lastChild);
+  }
+}
+
+export function createElement(options) {
+
+  const parent = options.parent ? options.parent : document.body;
+  const element = document.createElement(options.tag || 'div');
+  parent.appendChild(element);
+  delete options.parent;
+  delete options.type;
+  delete options.tag;
+
+  const optionKeys = Object.keys(options);
+  for(var key of optionKeys) {
+    try {
+    element[key] = options[key];
+    } catch(ex) {
+      debugger;
+    }
+  }
+
+  return element;
+}

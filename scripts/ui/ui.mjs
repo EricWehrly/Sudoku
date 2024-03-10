@@ -13,9 +13,19 @@ import './abilities.mjs';
 import './equipment.mjs';
 import UIElement from '../rendering/dom/ui/uiElement.mjs';
 import Events from '../core/events.mjs';
+import Modal from '../rendering/dom/ui/modal.mjs';
+import AbilityRenderer from './abilities.mjs';
+import EquipmentRenderer from './equipment.mjs';
 
 function toggleAbilities() {
-    GameOption.ShowAbilitiesMenu = !GameOption.ShowAbilitiesMenu;
+    // GameOption.ShowAbilitiesMenu = !GameOption.ShowAbilitiesMenu;
+
+    AbilityRenderer.container.style.display = 'block';
+    EquipmentRenderer.container.style.display = 'block';
+    Modal.addContents(AbilityRenderer.container);
+    Modal.addContents(EquipmentRenderer.container);
+    Modal.setTitle('Abilities');
+    Modal.show();
 }
 
 function toggleNotes() {
