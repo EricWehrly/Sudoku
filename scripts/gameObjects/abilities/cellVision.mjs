@@ -8,6 +8,8 @@ function shouldHighlight(activeCell, targetCell, abilityLevel) {
             return true;
     }
 
+    // TODO: add another ability level that highlights cells in the same square as the originally active cell
+
     if(abilityLevel > 1
         && activeCell.known
         && targetCell.known

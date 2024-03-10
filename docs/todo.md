@@ -1,16 +1,9 @@
 clear cell notes on correct guess
 
-purchasable ability to visualize more when selecting
-    rank 0: show selected tile
-    rank 1: show all in row + column (this is the current implementation)
-    show all in square
-    rank 2: also highlight known cells with same number
-    rank 3: show all 'blocked' by # (propogate rank 1 to other cells)
-
 visually represent currently equipped abilities in menu
     (doesn't work for stuff equipped in game.js)
 
-implement purchasable things but start the player with 999 money
+implement purchasable abilities but start the player with 999 money
 
 each individual block allows 3 guesses
     before game over
