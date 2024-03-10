@@ -46,13 +46,17 @@ new Grid({
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 
+const visionCostFunction = function() {
+
+    return 4 * (this.level * this.level);
+}
 const visionAbility = new Ability({
 
     trigger: Events.List.CellActive,
     action: cellVision,
-    maxLevel: 3
+    maxLevel: 3,
+    costFunction: visionCostFunction
 });
-visionAbility.level = 3;
 
 const sixesAbility = new Ability({
     trigger: Events.List.SudokuGuess,
