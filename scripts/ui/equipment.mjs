@@ -1,4 +1,4 @@
-import AbilityAction from "../gameObjects/abilities/abilityAction.mjs";
+import Ability from "../gameObjects/abilities/ability.mjs";
 import EquipmentSlot from "../gameObjects/equipmentSlot.mjs";
 import Renderer from "../rendering/dom/renderer.mjs";
 
@@ -88,7 +88,7 @@ export default class EquipmentRenderer extends Renderer {
     dropHandler(event) {
         this.removeClass('highlight');
         const data = event.dataTransfer.getData("text/plain");
-        const ability = AbilityAction[data];
+        const ability = Ability[data];
 
         this.#equipmentSlot.equip(ability);
     }

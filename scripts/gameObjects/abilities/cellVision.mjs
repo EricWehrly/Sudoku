@@ -1,5 +1,6 @@
-import AbilityAction from "./abilityAction.mjs";
+import Events from "../../core/events.mjs";
 import Grid from "../playfield/grid.mjs";
+import Ability from "./ability.mjs";
 
 function shouldHighlight(activeCell, targetCell, abilityLevel) {
     
@@ -39,9 +40,11 @@ function visionCallback(options) {
    }
 }
 
-const ability = new AbilityAction({
+const CellVision = new Ability({
     name: 'Enhanced Cell Vision',
-    callback: visionCallback
+    trigger: Events.List.CellActive,
+    callback: visionCallback,
+    maxLevel: 3
 });
 
-export default ability;
+export default CellVision;

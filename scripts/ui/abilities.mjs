@@ -1,5 +1,5 @@
 import Events from "../core/events.mjs";
-import AbilityAction from "../gameObjects/abilities/abilityAction.mjs";
+import Ability from "../gameObjects/abilities/ability.mjs";
 import Renderer from "../rendering/dom/renderer.mjs";
 
 export default class AbilityRenderer extends Renderer {
@@ -38,7 +38,7 @@ export default class AbilityRenderer extends Renderer {
         }
     }
 
-    #abilityAction;
+    #ability;
 
     constructor(options) {
 
@@ -48,9 +48,9 @@ export default class AbilityRenderer extends Renderer {
         AbilityRenderer.container.appendChild(options.element);
         super(options);
         options.renderer = this;
-        this.#abilityAction = options;
+        this.#ability = options;
 
-        this.element.innerHTML = this.#abilityAction.name;
+        this.element.innerHTML = this.#ability.name;
 
         options.element.draggable = true;
         options.element.addEventListener("dragstart", this.dragstartHandler.bind(this));
@@ -59,14 +59,14 @@ export default class AbilityRenderer extends Renderer {
     dragstartHandler(ev) {
 
         // ev.dataTransfer.setData("text/plain", ev.target.id);
-        console.log(this.#abilityAction);
-        ev.dataTransfer.setData('text/plain', this.#abilityAction.name);
+        console.log(this.#ability);
+        ev.dataTransfer.setData('text/plain', this.#ability.name);
     }
 }
 
 Events.Subscribe(Events.List.GameObjectCreated, function(gameObject) {
 
-    if(gameObject instanceof AbilityAction) {
+    if(gameObject instanceof Ability) {
         new AbilityRenderer(gameObject);
     }
 }.bind(this));

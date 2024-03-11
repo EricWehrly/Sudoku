@@ -2,7 +2,6 @@ import Grid from "./gameObjects/playfield/grid.mjs";
 import "./rendering/dom/gameObjects/grid.mjs"
 import './input/keyboard.mjs';
 import Events from "./core/events.mjs";
-import Ability from "./gameObjects/abilities/ability.mjs";
 import GameOption from "./core/gameOptions.mjs";
 import './ui/ui.mjs';
 import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
@@ -46,22 +45,9 @@ new Grid({
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 
-const visionAbility = new Ability({
-
-    trigger: Events.List.CellActive,
-    action: cellVision,
-    maxLevel: 3
-});
-visionAbility.level = 3;
-
-const sixesAbility = new Ability({
-    trigger: Events.List.SudokuGuess,
-    action: sixesPointToTwoes
-});
-
 const equip1 = new EquipmentSlot({
-    name: 'On Sudoku Guess',
-    trigger: Events.List.SudokuGuess
+    name: 'On Correct Guess',
+    trigger: Events.List.SudokuGuessCorrect
 });
 const equip2 = new EquipmentSlot({
     size: 3
@@ -69,5 +55,5 @@ const equip2 = new EquipmentSlot({
 
 // Events.RaiseEvent(Events.List.SudokuSquareCorrect, {});
 
-// equip1.equip(sixesAbility);
-equip2.equip(visionAbility);
+// equip1.equip(sixesPointToTwoes);
+equip2.equip(cellVision);

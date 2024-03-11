@@ -1,5 +1,6 @@
 import Grid from "../playfield/grid.mjs";
-import AbilityAction from "./abilityAction.mjs";
+import Ability from "./ability.mjs";
+import Events from "../../core/events.mjs";
 
 function sixesPointToTwoes() {
 
@@ -44,9 +45,10 @@ function eligibleCells(cell) {
         && cell.known;
 }
 
-const ability = new AbilityAction({
+const SixesPointToTwoes = new Ability({
     name: 'Sixes Point to Twoes',
+    trigger: Events.List.SudokuGuess,
     callback: sixesPointToTwoes
 });
 
-export default ability;
+export default SixesPointToTwoes;

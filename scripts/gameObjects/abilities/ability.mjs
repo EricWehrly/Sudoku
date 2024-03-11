@@ -1,12 +1,15 @@
 import Util from "../../util.mjs";
 import EquipmentSlot from "../equipmentSlot.mjs";
+import GameObject from "../gameObject.mjs";
 
-export default class Ability {
+export default class Ability extends GameObject {
 
+    #name;
     #trigger;
-    #action;
+    #callback;
     #cost;
     #level = 0;
+    get name() { return this.#name; }
     get cost() { return this.#cost; }
     get level() { return this.#level; }
     set level(value) {
@@ -16,15 +19,19 @@ export default class Ability {
     /**
      * 
      * @param {Object} options 
-     * @param {AbilityTrigger} options.trigger
+     * @param {Function} options.callback
      */
     constructor(options) {
 
-        if(!Util.AssertProperty(options, 'trigger', this)) return null;
-        if(!Util.AssertProperty(options, 'action', this)) return null;
+        if(!Util.AssertProperty(options, 'name')) return null;
+        if(!Util.AssertProperty(options, 'trigger')) return null;
+        if(!Util.AssertProperty(options, 'callback')) return null;
 
+        super(options);
+
+        this.#name = options.name;
+        this.#callback = options.callback;
         this.#trigger = options.trigger;
-        this.#action = options.action;
 
         if(options.costFunction) {
             this.#cost = options.costFunction;
@@ -38,6 +45,8 @@ export default class Ability {
         }
 
         Events.Subscribe(this.#trigger, this.#handleTrigger.bind(this));
+
+        super.postConstruct();
     }
 
     #handleTrigger(details) {
@@ -49,7 +58,7 @@ export default class Ability {
                 equipmentSlot,
                 ...details
             };
-            this.#action(options);
+            this.#callback(options);
         }
     }
 }
