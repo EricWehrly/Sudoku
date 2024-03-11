@@ -45,6 +45,19 @@ new Grid({
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 
+const visionAbility = new Ability({
+
+    trigger: Events.List.CellActive,
+    action: cellVision,
+    maxLevel: 3
+});
+visionAbility.level = 3;
+
+const sixesAbility = new Ability({
+    trigger: Events.List.SudokuGuess,
+    action: sixesPointToTwoes
+});
+
 const equip1 = new EquipmentSlot({
     name: 'On Correct Guess',
     trigger: Events.List.SudokuGuessCorrect
