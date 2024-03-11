@@ -1,8 +1,3 @@
-clear cell notes on correct guess
-
-visually represent currently equipped abilities in menu
-    (doesn't work for stuff equipped in game.js)
-
 implement purchasable abilities but start the player with 999 money
 
 each individual block allows 3 guesses
