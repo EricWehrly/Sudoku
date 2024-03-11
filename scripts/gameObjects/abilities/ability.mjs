@@ -46,6 +46,7 @@ export default class Ability extends GameObject {
 
         Events.Subscribe(this.#trigger, this.#handleTrigger.bind(this));
 
+        Ability[this.#name] = this;
         super.postConstruct();
     }
 
