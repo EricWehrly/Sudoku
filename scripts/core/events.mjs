@@ -4,6 +4,7 @@ import { generateId } from "../util/javascript-extensions.mjs"
 export default class Events {
 
     static List = {
+        'WindowResized': 'WindowResized',
         'GameStart': 'GameStart',
         'GameObjectCreated': 'GameObjectCreated',
         'CellActive': 'CellActive',
