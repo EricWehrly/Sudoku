@@ -39,6 +39,7 @@ export default class AbilityRenderer extends Renderer {
     }
 
     #ability;
+    #upgradeButton;
 
     constructor(options) {
 
@@ -53,10 +54,23 @@ export default class AbilityRenderer extends Renderer {
         this.element.innerHTML = this.#ability.name;
 
         options.element.draggable = true;
-        options.element.addEventListener("dragstart", this.dragstartHandler.bind(this));
+        options.element.addEventListener("dragstart", this.#dragstartHandler.bind(this));
+
+        if(this.#ability.level < this.#ability.maxLevel) {
+            this.#upgradeButton = document.createElement('div');
+            this.#upgradeButton.className = 'upgrade';
+            options.element.appendChild(this.#upgradeButton);
+            options.element.addEventListener("click", this.#upgrade.bind(this));
+        }
+    }
+
+    #upgrade() {
+        this.#ability.level++;
+
+        // check if we should remove this.#upgradeButton
     }
     
-    dragstartHandler(ev) {
+    #dragstartHandler(ev) {
 
         // ev.dataTransfer.setData("text/plain", ev.target.id);
         console.log(this.#ability);

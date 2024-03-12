@@ -112,6 +112,7 @@
     
     border: 1px solid black;
     display: inline-block;
+    position: relative;
 }
 
 .ui.button {
@@ -120,4 +121,13 @@
 
 .buttonPanel .button {
     display: inline-block;
+}
+
+.ability.container .upgrade:after {
+    content: '+';
+    position: absolute;
+    right: 1em;
+    bottom: -1em;
+    cursor: pointer;
+    border: 1px solid black;
 }

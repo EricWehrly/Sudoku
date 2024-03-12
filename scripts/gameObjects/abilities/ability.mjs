@@ -9,9 +9,11 @@ export default class Ability extends GameObject {
     #callback;
     #cost;
     #level = 0;
+    #maxLevel;
     get name() { return this.#name; }
     get cost() { return this.#cost; }
     get level() { return this.#level; }
+    get maxLevel() { return this.#maxLevel; }
     set level(value) {
         this.#level = value;
     }
@@ -32,6 +34,7 @@ export default class Ability extends GameObject {
         this.#name = options.name;
         this.#callback = options.callback;
         this.#trigger = options.trigger;
+        this.#maxLevel = options.maxLevel;
 
         if(options.costFunction) {
             this.#cost = options.costFunction;
