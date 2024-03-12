@@ -74,7 +74,7 @@ export default class AbilityRenderer extends Renderer {
     #upgrade() {
         this.#ability.level++;
 
-        // check if we should remove this.#upgradeButton
+        if(this.#ability.level == this.#ability.maxLevel) this.element.removeChild(this.#upgradeButton);
     }
     
     #dragstartHandler(ev) {
