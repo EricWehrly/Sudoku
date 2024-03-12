@@ -21,6 +21,7 @@ export default class Modal {
             'for': 'modal-checkbox',
             'className': 'modal-background'
         });
+        Modal.#background.addEventListener('click', Modal.hide);
 
         Modal.#container = createElement({
             'className': 'modal'
