@@ -62,6 +62,13 @@ export default class AbilityRenderer extends Renderer {
             options.element.appendChild(this.#upgradeButton);
             options.element.addEventListener("click", this.#upgrade.bind(this));
         }
+
+        this.update();
+    }
+
+    update(options) {
+
+        if(this.#upgradeButton) this.#upgradeButton.innerText = `level ${this.#ability.level} / ${this.#ability.maxLevel}`;
     }
 
     #upgrade() {

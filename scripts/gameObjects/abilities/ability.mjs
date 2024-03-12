@@ -16,6 +16,7 @@ export default class Ability extends GameObject {
     get maxLevel() { return this.#maxLevel; }
     set level(value) {
         this.#level = value;
+        this.renderer.update();
     }
 
     /**
