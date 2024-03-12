@@ -10,12 +10,10 @@ Equippable abilities per number
 
 Ability ideas:
 (suffix) - (triggers) When all entries for # are found
-(suffix) - (triggers) When guess is wrong
-(suffix) - (triggers) When guess is correct
-(Prefix) - Adds 1 hint
-(Prefix) - Automatically fills in the most obvious cell
-(Prefix) - Automatically fills in the least obvious cell
-(Prefix) - Automatically make notes
+Adds 1 hint
+Automatically fills in the most obvious cell
+Automatically fills in the least obvious cell
+Automatically make notes
 mark cells with even #s in square
 draws a random shape from cells and shows the total for that shape (may as well do tetriminos)
 $$$$

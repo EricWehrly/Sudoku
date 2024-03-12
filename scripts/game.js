@@ -4,8 +4,7 @@ import './input/keyboard.mjs';
 import Events from "./core/events.mjs";
 import GameOption from "./core/gameOptions.mjs";
 import './ui/ui.mjs';
-import sixesPointToTwoes from "./gameObjects/abilities/sixesPointToTwoes.mjs";
-import cellVision from "./gameObjects/abilities/cellVision.mjs"
+import Abilities from "./gameObjects/abilities/abilities.mjs";
 import EquipmentSlot from "./gameObjects/equipmentSlot.mjs";
 import Malefactors from "./gameObjects/malefactors/malefactors.mjs";
 
@@ -39,15 +38,11 @@ new Grid({
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 
-const equip1 = new EquipmentSlot({
+new EquipmentSlot({
     name: 'On Correct Guess',
     trigger: Events.List.SudokuGuessCorrect
 });
-const equip2 = new EquipmentSlot({
-    size: 3
+new EquipmentSlot({
+    name: 'On Wrong Guess',
+    trigger: Events.List.SudokuGuessWrong
 });
-
-// Events.RaiseEvent(Events.List.SudokuSquareCorrect, {});
-
-// equip1.equip(sixesPointToTwoes);
-equip2.equip(cellVision);
