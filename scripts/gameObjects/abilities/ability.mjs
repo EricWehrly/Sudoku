@@ -27,7 +27,7 @@ export default class Ability extends GameObject {
     constructor(options) {
 
         if(!Util.AssertProperty(options, 'name')) return null;
-        if(!Util.AssertProperty(options, 'trigger')) return null;
+        // if(!Util.AssertProperty(options, 'trigger')) return null;
         if(!Util.AssertProperty(options, 'callback')) return null;
 
         super(options);
@@ -48,7 +48,7 @@ export default class Ability extends GameObject {
             this.#cost = options.cost;
         }
 
-        Events.Subscribe(this.#trigger, this.#handleTrigger.bind(this));
+        if(this.#trigger) Events.Subscribe(this.#trigger, this.#handleTrigger.bind(this));
 
         Ability[this.#name] = this;
         super.postConstruct();
