@@ -114,6 +114,11 @@ export default class Grid extends GameObject {
 
         const square = cell.square;
         if(square.solved) Events.RaiseEvent(Events.List.SudokuSquareCorrect, { square });
+
+        const digitCells = this.getCells(gridCell => gridCell.digit == cell.digit && gridCell.known);
+        if(digitCells.length == this.size * this.size) {
+            Events.RaiseEvent(Events.List.SudokuNumberCompleted, { digit: cell.digit });
+        } 
     }
 
     #addCells() {

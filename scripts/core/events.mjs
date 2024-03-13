@@ -11,6 +11,7 @@ export default class Events {
         'SudokuGuess': 'SudokuGuess',
         'SudokuGuessCorrect': 'SudokuGuessCorrect',
         'SudokuGuessWrong': 'SudokuGuessWrong',
+        'SudokuNumberCompleted': 'SudokuNumberCompleted',
         'SudokuSquareCorrect': 'SudokuSquareCorrect',
         'EffectAdded': 'EffectAdded',
         'EffectRemoved': 'EffectRemoved'

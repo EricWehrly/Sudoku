@@ -46,3 +46,12 @@ new EquipmentSlot({
     name: 'On Wrong Guess',
     trigger: Events.List.SudokuGuessWrong
 });
+new EquipmentSlot({
+    name: 'On Number Completed',
+    trigger: Events.List.SudokuNumberCompleted,
+    size: 3
+});
+
+Events.Subscribe(Events.List.SudokuNumberCompleted, function(number) {
+    console.log(`${number.digit} completed!`);
+})
