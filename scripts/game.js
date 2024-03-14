@@ -42,7 +42,7 @@ new EquipmentSlot({
     name: 'On Correct Guess',
     trigger: Events.List.SudokuGuessCorrect
 });
-new EquipmentSlot({
+const wrongo = new EquipmentSlot({
     name: 'On Wrong Guess',
     trigger: Events.List.SudokuGuessWrong
 });
@@ -51,6 +51,8 @@ new EquipmentSlot({
     trigger: Events.List.SudokuNumberCompleted,
     size: 3
 });
+
+wrongo.equip(Abilities.GetMoney);
 
 Events.Subscribe(Events.List.SudokuNumberCompleted, function(number) {
     console.log(`${number.digit} completed!`);

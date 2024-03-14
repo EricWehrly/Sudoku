@@ -37,7 +37,6 @@ export default class Malefactor {
 
     #wrong(details) {
 
-        console.log(details.cell);
         if(this.#activated && this.#effect) details.cell.addEffect(this.#effect);
     }
 }

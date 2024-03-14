@@ -12,6 +12,7 @@ export default class Ability extends GameObject {
     #maxLevel;
     get name() { return this.#name; }
     get cost() { return this.#cost; }
+    get callback() { return this.#callback; }
     get level() { return this.#level; }
     get maxLevel() { return this.#maxLevel; }
     set level(value) {
@@ -48,13 +49,13 @@ export default class Ability extends GameObject {
             this.#cost = options.cost;
         }
 
-        if(this.#trigger) Events.Subscribe(this.#trigger, this.#handleTrigger.bind(this));
+        if(this.#trigger) Events.Subscribe(this.#trigger, this.handleTrigger.bind(this));
 
         Ability[this.#name] = this;
         super.postConstruct();
     }
 
-    #handleTrigger(details) {
+    handleTrigger(details) {
 
         const equipmentSlot = EquipmentSlot.GetSlot(this);
         if(equipmentSlot) {

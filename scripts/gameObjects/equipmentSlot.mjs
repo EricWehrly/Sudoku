@@ -20,6 +20,7 @@ export default class EquipmentSlot extends GameObject {
     #equipped;
     #conditions;
     #size = 1;
+    #trigger;
     // later: slot type ..
     // ... for now, only ability
 
@@ -33,9 +34,17 @@ export default class EquipmentSlot extends GameObject {
         if(options.size) this.#size = options.size;
         this.#conditions = options.conditions;
         this.#name = options.name;
+        this.#trigger = options.trigger;
         EquipmentSlot.#slots.push(this);
 
+        if(this.#trigger) Events.Subscribe(this.#trigger, this.#triggerAbility.bind(this));
+
         super.postConstruct();
+    }
+
+    #triggerAbility(details) {
+
+        if(this.#equipped) this.#equipped.handleTrigger(details);
     }
 
     canEquip(item) {
