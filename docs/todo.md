@@ -9,18 +9,21 @@ variable difficulty -- how many pre-filled
 Equippable abilities per number
 
 Ability ideas:
-(suffix) - (triggers) When all entries for # are found
 Adds 1 hint
 Automatically fills in the most obvious cell
 Automatically fills in the least obvious cell
 Automatically make notes
 mark cells with even #s in square
 draws a random shape from cells and shows the total for that shape (may as well do tetriminos)
-$$$$
 
 magic, spells, sci-fi -- cool orthoganal avenues
 colors & elemental statuses
 spy shit in the numbers, grids, sections? (missions to try to identify a particular one)
+
+"one of these twoes is a dirty russian zed. find him before he escapes. do not let him know you are hunting him"
+    no twoes can be "auto" revealed
+    guesses in the same square, row, or column cause the hiding 2 to move to different place
+    wrong guesses glow with greater intensity when nearer the zed
 
 vines / fire that spreads from wrong guesses
     and obviously you lose if it saturates the board
