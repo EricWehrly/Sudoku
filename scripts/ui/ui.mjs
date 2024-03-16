@@ -16,6 +16,7 @@ import Events from '../core/events.mjs';
 import Modal from '../rendering/dom/ui/modal.mjs';
 import AbilityRenderer from './abilities.mjs';
 import EquipmentRenderer from './equipment.mjs';
+import HintRenderer from './hint.mjs';
 
 function toggleAbilities() {
     // GameOption.ShowAbilitiesMenu = !GameOption.ShowAbilitiesMenu;
