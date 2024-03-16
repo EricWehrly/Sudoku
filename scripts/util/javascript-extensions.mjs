@@ -152,10 +152,10 @@ export function createElement(options) {
   delete options.tag;
 
   const optionKeys = Object.keys(options);
-  for(var key of optionKeys) {
+  for (var key of optionKeys) {
     try {
-    element[key] = options[key];
-    } catch(ex) {
+      element[key] = options[key];
+    } catch (ex) {
       debugger;
     }
   }
