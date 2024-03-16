@@ -7,18 +7,15 @@ each individual block allows 3 guesses
 variable difficulty -- how many pre-filled
 
 Equippable abilities per number
+    or, maybe, a type of 'gem/socket' system
+        that has the 'gem's in the numbers apply effects (like lightning damage) to the triggering ability
 
 Ability ideas:
-Adds 1 hint
-Automatically fills in the most obvious cell
-Automatically fills in the least obvious cell
-Automatically make notes
-mark cells with even #s in square
-draws a random shape from cells and shows the total for that shape (may as well do tetriminos)
+    mark cells with even #s in square
+    draws a random shape from cells and shows the total for that shape (may as well do tetriminos)
 
 magic, spells, sci-fi -- cool orthoganal avenues
 colors & elemental statuses
-spy shit in the numbers, grids, sections? (missions to try to identify a particular one)
 
 "one of these twoes is a dirty russian zed. find him before he escapes. do not let him know you are hunting him"
     no twoes can be "auto" revealed
