@@ -24,6 +24,9 @@ spy shit in the numbers, grids, sections? (missions to try to identify a particu
     no twoes can be "auto" revealed
     guesses in the same square, row, or column cause the hiding 2 to move to different place
     wrong guesses glow with greater intensity when nearer the zed
+    
+Antagonist hides bombs under certain #s
+    You're told the digit that the bomb is planted under, but not which instance 
 
 vines / fire that spreads from wrong guesses
     and obviously you lose if it saturates the board
@@ -39,3 +42,4 @@ Cannot guess same wrong #s until they're right
 Must fill in X last
 Limited notes?
 Render guessed #s invisible
+sudden death (no wrong guesses allowed)

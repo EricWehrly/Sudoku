@@ -7,6 +7,7 @@ import './ui/ui.mjs';
 import Abilities from "./gameObjects/abilities/abilities.mjs";
 import EquipmentSlot from "./gameObjects/equipmentSlot.mjs";
 import Malefactors from "./gameObjects/malefactors/malefactors.mjs";
+import DumbHint from "./hints/dumbestHint.mjs";
 
 const GAME_GRID_SIZE = 3;
 

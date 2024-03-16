@@ -1,6 +1,7 @@
 import Events from "../core/events.mjs";
 import GameOption from "../core/gameOptions.mjs";
 import Grid from "../gameObjects/playfield/grid.mjs";
+import Hint from "../hints/hint.mjs";
 
 function handleKeyDown(event) {
 
@@ -14,6 +15,12 @@ function handleKeyDown(event) {
 
     if(event.key == 'n') {
         GameOption.NotesMode = !GameOption.NotesMode;
+    }
+
+    if(event.key == 'h') {
+        const hint = Hint.get();
+        hint.cell.active = true;
+        Events.RaiseEvent(Events.List.SudokuGuess, hint.cell.digit);
     }
 
     if(event.key == 'ArrowDown') {
