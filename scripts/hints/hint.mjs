@@ -6,12 +6,21 @@ export default class Hint {
     static #hints = [];
 
     static #used = 0;
-    static #count = 1;
+    static #count = 0;
     static #max = 3;
-    static get count() { return this.#count; }
-    static set count(value) { this.#count = value; }
     static get max() { return this.#max; }
     static set max(value) { this.#max = value; }
+    static get count() { return this.#count; }
+    static set count(value) {
+
+        const oldValue = value;
+        this.#count = value;
+        Events.RaiseEvent(Events.List.ResourceChanged, {
+            oldValue,
+            newValue: this.#count,
+            resource: Hint
+        });
+    }
 
     static get(execute = true) {
 

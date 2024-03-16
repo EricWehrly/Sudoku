@@ -39,7 +39,7 @@ new Grid({
 const gameStartOptions = { finalFire: true };
 Events.RaiseEvent(Events.List.GameStart, null, gameStartOptions);
 
-new EquipmentSlot({
+const righto = new EquipmentSlot({
     name: 'On Correct Guess',
     trigger: Events.List.SudokuGuessCorrect
 });
@@ -53,8 +53,5 @@ new EquipmentSlot({
     size: 3
 });
 
+righto.equip(Abilities.AddHint);
 wrongo.equip(Abilities.GetMoney);
-
-Events.Subscribe(Events.List.SudokuNumberCompleted, function(number) {
-    console.log(`${number.digit} completed!`);
-})

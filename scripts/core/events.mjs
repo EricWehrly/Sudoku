@@ -15,7 +15,8 @@ export default class Events {
         'SudokuSquareCorrect': 'SudokuSquareCorrect',
         'EffectAdded': 'EffectAdded',
         'EffectRemoved': 'EffectRemoved',
-        'HintUsed': 'HintUsed'
+        'HintUsed': 'HintUsed',
+        'ResourceChanged': 'ResourceChanged'
     };
 
     static #Subscriptions = {};

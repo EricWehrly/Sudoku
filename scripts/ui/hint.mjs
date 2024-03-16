@@ -29,6 +29,7 @@ export default class HintRenderer extends UIElement {
         this.element.addEventListener("click", Hint.get, false);
 
         Events.Subscribe(Events.List.HintUsed, this.update.bind(this));
+        Events.Subscribe(Events.List.ResourceChanged, this.update.bind(this));
     }
 
     update(options) {
