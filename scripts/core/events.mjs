@@ -14,7 +14,8 @@ export default class Events {
         'SudokuNumberCompleted': 'SudokuNumberCompleted',
         'SudokuSquareCorrect': 'SudokuSquareCorrect',
         'EffectAdded': 'EffectAdded',
-        'EffectRemoved': 'EffectRemoved'
+        'EffectRemoved': 'EffectRemoved',
+        'HintUsed': 'HintUsed'
     };
 
     static #Subscriptions = {};

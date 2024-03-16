@@ -1,28 +1,45 @@
 import Util from "../util.mjs";
+import Events from "../core/events.mjs";
 
 export default class Hint {
 
     static #hints = [];
 
     static #used = 0;
-    static #count = 0;
+    static #count = 1;
     static #max = 3;
     static get count() { return this.#count; }
     static set count(value) { this.#count = value; }
     static get max() { return this.#max; }
     static set max(value) { this.#max = value; }
 
-    static get() {
+    static get(execute = true) {
+
+        if(this.count < 1) {
+            console.log('(TODO: Tell the player) No hints available.');
+            return {};
+        }
+
         this.count--;
         this.#used++;
 
-        const cell = Hint.#hints[0].findCell();
-
-        // find out the best eligible hint
-
-        return {
-            cell
+        // TODO: Replace "get the first hint" with
+        // finding the best eligible hint
+        const hint = Hint.#hints[0];
+        const cell = hint.findCell();
+        if(execute) {
+            cell.active = true;
+            Events.RaiseEvent(Events.List.SudokuGuess, cell.digit);
         }
+
+        const returnObj = {
+            cell,
+            hint
+        };
+
+        Events.RaiseEvent(Events.List.HintUsed, returnObj);
+
+        return returnObj;
     }
 
     #hintCell;
@@ -46,7 +63,4 @@ export default class Hint {
     get hint() { return this.#hintCell;}
 
     get eligible() { return false; }
-
-    // method to identify (and cache) which cell the hint will target
-    // invalidate if the sudoku guess is for that cell
 }

@@ -18,9 +18,7 @@ function handleKeyDown(event) {
     }
 
     if(event.key == 'h') {
-        const hint = Hint.get();
-        hint.cell.active = true;
-        Events.RaiseEvent(Events.List.SudokuGuess, hint.cell.digit);
+        Hint.get();
     }
 
     if(event.key == 'ArrowDown') {
