@@ -2,6 +2,7 @@ import Renderer from "../renderer.mjs";
 
 export default class UIElement extends Renderer {
 
+    #parent;
     #name;
     get name() { return this.#name; }
 
@@ -15,8 +16,18 @@ export default class UIElement extends Renderer {
         
         if(options.parent) options.parent.appendChild(options.element);
         else {
-            const renderRoot = document.getElementById("ui-container-parent");
-            renderRoot.appendChild(options.element);
+            this.#parent = "ui-container-parent";
+            this.#attachRoot();
+        }
+    }
+
+    #attachRoot() {
+        const renderRoot = document.getElementById(this.#parent);
+        if(renderRoot) {
+            renderRoot.appendChild(this.element);
+        } else {
+            // bleh, hack
+            setTimeout(this.#attachRoot.bind(this), 10);
         }
     }
 }
