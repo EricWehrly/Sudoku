@@ -18,7 +18,7 @@ export default class PlayerInfoRenderer extends UIElement {
 
         PlayerInfoRenderer.#instance = new PlayerInfoRenderer({
             name: 'PlayerInfo',
-            classes: 'bottom right'
+            parent: 'info-pane'
         });
     }
 
