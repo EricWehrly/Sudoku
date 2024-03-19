@@ -11,7 +11,7 @@ export default class HintRenderer extends UIElement {
 
         HintRenderer.#instance = new HintRenderer({
             name: 'Hints',
-            classes: 'bottom right'
+            parent: 'info-pane'
         });
     }
 

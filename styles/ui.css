@@ -131,3 +131,14 @@
     cursor: pointer;
     border: 1px solid black;
 }
+
+#info-pane {
+	position: absolute;
+	right: 4px;
+	bottom: 4px;
+}
+
+#info-pane > div {
+	margin: 6px;
+	display: inline-block;
+}
