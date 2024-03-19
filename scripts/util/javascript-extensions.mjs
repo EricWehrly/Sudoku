@@ -142,13 +142,27 @@ export function detachChildrenFromElement(element) {
   }
 }
 
+/**
+ * 
+ * @param {Object} options 
+ * @param {Object} options.parent Either a string or HTMLElement that the created element will be attached to. Otherwise it will be attached to document.body. 
+ * @param {String} options.tag What kind of HTMLElement. Defaults to 'div'
+ * @returns 
+ */
 export function createElement(options) {
 
-  const parent = options.parent ? options.parent : document.body;
   const element = document.createElement(options.tag || 'div');
-  parent.appendChild(element);
+  eventuallyAttach(element, options.parent);
+  if(options.classes) {
+    if (typeof options.classes == 'string') {
+      element.className = options.classes;
+    } else {
+      console.warn(`Not appending classes?`);
+    }
+  }
+
   delete options.parent;
-  delete options.type;
+  // delete options.type;
   delete options.tag;
 
   const optionKeys = Object.keys(options);
@@ -161,4 +175,44 @@ export function createElement(options) {
   }
 
   return element;
+}
+
+export async function eventuallyAttach(element, parent) {
+
+  parent = await resolveDomParentElement(parent);
+  parent.appendChild(element);
+}
+
+// https://stackoverflow.com/a/61511955/5450892
+function waitForElement(selector) {
+  return new Promise(resolve => {
+      if (document.querySelector(selector)) {
+          return resolve(document.querySelector(selector));
+      }
+
+      const observer = new MutationObserver(mutations => {
+          if (document.querySelector(selector)) {
+              observer.disconnect();
+              resolve(document.querySelector(selector));
+          }
+      });
+
+      // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
+      observer.observe(document.body, {
+          childList: true,
+          subtree: true
+      });
+  });
+}
+
+async function resolveDomParentElement(parent) {
+
+  if (parent == null) return document.body;
+
+  if (typeof parent == 'string') {
+    return await waitForElement(`#${parent}`);
+  }
+  else if (parent instanceof HTMLElement) {
+    return parent;
+  }
 }
